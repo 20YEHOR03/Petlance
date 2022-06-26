@@ -106,6 +106,7 @@ namespace Petlance
             DeclineDialog.FindViewById<TextView>(Resource.Id.start_price).Text += Order.Price;
             DeclineDialog.FindViewById<TextView>(Resource.Id.available_paws).Text += $"{discount.AvailablePaws}/{Petlance.User.Paws}";
             TextView totalPrice = DeclineDialog.FindViewById<TextView>(Resource.Id.total_price);
+            totalPrice.Text = $"Total price: {Order.Price}";
             checkBox = DeclineDialog.FindViewById<CheckBox>(Resource.Id.use_paws);
             checkBox.CheckedChange += delegate
             {
@@ -117,6 +118,7 @@ namespace Petlance
         {
             RightButton.Visibility = ViewStates.Gone;
             Order.IsPaid = true;
+            Order.Price = discount.DiscountedPrice;
             Order.Update();
             Petlance.User.Paws -= discount.AvailablePaws;
             Petlance.User.Paws += discount.DiscountCashback;
@@ -157,14 +159,14 @@ namespace Petlance
         {
             Order.Price = totalPrice;
             Order.IsAccepted = true;
-            Order.Price = discount.DiscountedPrice;
             Order.Send();
             AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(this);
             ad.SetMessage("Cheque sent");
-            ad.SetPositiveButton("OK", (sender, e) => { });
+            ad.SetPositiveButton("OK", (sender, e) => {
+                Finish();
+                Parent.UpdateIncomming();
+             });
             ad.Create().Show();
-            Finish();
-            Parent.UpdateIncomming();
         }
         private void AddReviewButton_Click(object sender, EventArgs e) => Review.Show();
 

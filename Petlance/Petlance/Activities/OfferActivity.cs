@@ -50,7 +50,7 @@ namespace Petlance
             alert.SetMessage(Offer.Contacts);
             ContactsDialog = alert.Create();
             ContactsButton.Click += ContactsButton_Click;
-            try { FindViewById<ImageView>(Resource.Id.picture).SetImageBitmap(Offer.Executor.Picture); }
+            try { FindViewById<ImageView>(Resource.Id.picture).SetImageBitmap(Images.GetBitmapFromBytes(Offer.Executor.Picture)); }
             catch { FindViewById<ImageView>(Resource.Id.picture).SetImageResource(Resource.Drawable.no_image); }
             FindViewById<TextView>(Resource.Id.title).Text = Offer.Executor.Name;
             FindViewById<TextView>(Resource.Id.desc).Text = Offer.Description;

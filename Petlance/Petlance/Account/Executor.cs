@@ -13,7 +13,7 @@ namespace Petlance
                         string tel,
                         string email,
                         int paws,
-                        Bitmap picture,
+                        byte[] picture,
                         int id,
                         byte[] document,
                         DateTime date)
@@ -57,7 +57,7 @@ namespace Petlance
                                                   email: reader.GetString(reader.GetOrdinal("email")),
                                                   paws: reader.GetInt32(reader.GetOrdinal("paws")),
                                                   id: reader.GetInt32(reader.GetOrdinal("id")),
-                                                  picture: Images.GetBitmapFromBytes((byte[])reader["picture"]),
+                                                  picture: (byte[])reader["picture"],
                                                   document: (byte[])reader["document"],
                                                   date: reader.GetDateTime(reader.GetOrdinal("date"))) : null;
         }

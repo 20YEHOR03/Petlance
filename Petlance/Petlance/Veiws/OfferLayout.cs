@@ -40,7 +40,7 @@ namespace Petlance
             };
             layout.SetGravity(Android.Views.GravityFlags.CenterVertical);
             ImageView imageView = new ImageView(Context) { LayoutParameters = new LayoutParams(ImageSize, ImageSize) };
-            try { imageView.SetImageBitmap(offer.Executor.Picture); }
+            try { imageView.SetImageBitmap(Images.GetBitmapFromBytes(offer.Executor.Picture)); }
             catch { imageView.SetImageResource(Resource.Drawable.no_image); }
             layout.AddView(imageView);
             LinearLayout Right = new LinearLayout(Context)

@@ -12,7 +12,7 @@ namespace Petlance
     {
         public User()
         { }
-        public User(string name, string password, string phone, string email, int paws, Bitmap picture, int id)
+        public User(string name, string password, string phone, string email, int paws, byte[] picture, int id)
         {
             Name = name;
             Password = password;
@@ -31,7 +31,7 @@ namespace Petlance
         public string Email { get; set; }
         public string Phone { get; set; } = null;
         public int Id { get; set; }
-        public Bitmap Picture { get; set; }
+        public byte[] Picture { get; set; }
 
         public string InsertQuery => "INSERT INTO `user` (`name`, `tel`, `email`, `password`, `paws`, `picture`) "
             + "VALUES (@name, @tel, @email, @password, @paws, @picture)";
@@ -61,7 +61,7 @@ namespace Petlance
             command.Parameters.Add("@email", SqlType.String).Value = Email;
             command.Parameters.Add("@password", SqlType.String).Value = Password;
             command.Parameters.Add("@paws", SqlType.Int32).Value = Paws;
-            command.Parameters.Add("@picture", SqlType.Blob).Value = Images.GetBytesFromBitmap(Picture);
+            command.Parameters.Add("@picture", SqlType.LongBlob).Value = Picture;
             if (check)
                 command.Parameters.Add("@id", SqlType.Int32).Value = Id;
             return command.ExecuteNonQuery() > 0;
@@ -104,12 +104,12 @@ namespace Petlance
                                     phone: reader.GetString(reader.GetOrdinal("tel")),
                                     email: reader.GetString(reader.GetOrdinal("email")),
                                     paws: reader.GetInt32(reader.GetOrdinal("paws")),
-                                    picture: Images.GetBitmapFromBytes((byte[])reader["picture"]),
+                                    picture: (byte[])reader["picture"],
                                     id: id);
                 }
             return user;
         }
-        public static Bitmap GetDefaultAvatar(Context context) => BitmapFactory.DecodeResource(context.Resources, Resource.Drawable.profile);
+        public static byte[] GetDefaultAvatar(Context context) => Images.GetBytesFromBitmap(BitmapFactory.DecodeResource(context.Resources, Resource.Drawable.profile));
         public bool SendVerification(byte[] document)
         {
             try
@@ -117,12 +117,16 @@ namespace Petlance
                 using Database db = new Database();
                 Command command = db.Command("INSERT INTO `verification`(`user`, `document`) VALUES (@user, @document)");
                 command.Parameters.Add("@user", SqlType.Int32).Value = Id;
-                command.Parameters.Add("@document", SqlType.Blob).Value = document;
+                command.Parameters.Add("@document", SqlType.LongBlob).Value = document;
                 return command.ExecuteNonQuery() > 0;
             }
             catch { }
             return false;
         }
-
+        public void SetAvatar(byte[] bitmap)
+        {
+            Picture = bitmap;
+            Update();
+        }
     }
 }

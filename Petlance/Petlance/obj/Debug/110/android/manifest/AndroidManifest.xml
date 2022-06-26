@@ -17,14 +17,12 @@
     <activity android:name="crc64fc3325efa7b239bc.EditOfferActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.OfferListActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.DrawerActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
-    <activity android:name="crc64fc3325efa7b239bc.HelpActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.MyOffersActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.OrderActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.UserOrdersActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.PetlanceActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.RegisterActivity" android:noHistory="true" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.ReportsActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
-    <activity android:name="crc64fc3325efa7b239bc.SettingsActivity" android:label="SettingsActivity" />
     <activity android:name="crc64fc3325efa7b239bc.FavoritesActivity" android:label="Favorites" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.UserActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.VerifyActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />

@@ -15,11 +15,6 @@
             android:checkable="false"
             android:title="Profile"/>
         <item
-            android:id="@+id/settings"
-            android:icon="@drawable/settings"
-            android:checkable="false"
-            android:title="Settings"/>
-        <item
             android:id="@+id/favourites"
             android:icon="@drawable/favorite_menu"
             android:checkable="false"
@@ -39,11 +34,6 @@
             android:icon="@drawable/comments"
             android:checkable="false"
             android:title="My comments"/>
-		<item
-            android:id="@+id/faq"
-            android:icon="@drawable/faq"
-            android:checkable="false"
-            android:title="FAQ"/>
 		<item
             android:id="@+id/logout"
             android:icon="@drawable/logout"

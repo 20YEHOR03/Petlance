@@ -38,14 +38,14 @@ namespace Petlance
             UpdateHeader();
             base.OnDrawerOpened(drawerView);
         }
-        private void UpdateHeader()
+        public void UpdateHeader()
         {
             navigationView.Menu.Clear();
             if (Petlance.User != null)
             {
                 NavHeader.FindViewById<TextView>(Resource.Id.account_name).Text = Petlance.User.Name;
                 NavHeader.FindViewById<TextView>(Resource.Id.balance).Text = Petlance.User.Paws.ToString();
-                NavHeader.FindViewById<ImageView>(Resource.Id.profile_pic).SetImageBitmap(Petlance.User.Picture);
+                NavHeader.FindViewById<ImageView>(Resource.Id.profile_pic).SetImageBitmap(Images.GetBitmapFromBytes(Petlance.User.Picture));
                 if(Petlance.User is Executor)
                     navigationView.InflateMenu(Resource.Menu.main_drawer_executor);
                 else

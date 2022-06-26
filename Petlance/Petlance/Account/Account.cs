@@ -27,7 +27,7 @@ namespace Petlance
                                            phone: userReader.GetString(userReader.GetOrdinal("tel")),
                                            email: userReader.GetString(userReader.GetOrdinal("email")),
                                            paws: userReader.GetInt32(userReader.GetOrdinal("paws")),
-                                           picture: Images.GetBitmapFromBytes((byte[])userReader["picture"]),
+                                           picture: (byte[])userReader["picture"],
                                            id: userReader.GetInt32(userReader.GetOrdinal("id")));
                 }
             command = db.Command($"SELECT * FROM `admin` WHERE `login`=@login");

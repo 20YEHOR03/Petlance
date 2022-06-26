@@ -15,31 +15,21 @@
             android:checkable="false"
             android:title="Profile"/>
 		<item
-            android:id="@+id/settings"
-            android:icon="@drawable/settings"
-            android:checkable="false"
-            android:title="Settings"/>
-		<item
             android:id="@+id/favourites"
             android:icon="@drawable/favorite_menu"
             android:checkable="false"
             android:title="Favourites"/>
 		<item
-            android:id="@+id/my_offers"
+            android:id="@+id/orders"
             android:icon="@drawable/my_orders"
             android:checkable="false"
-            android:title="My offers"/>
+            android:title="My orders"/>
 		<item
             android:id="@+id/promote"
             android:icon="@drawable/favorite_menu"
             android:checkable="false"
             android:title="Become an executor"/>
 		android:title="My comments"/>
-		<item
-            android:id="@+id/faq"
-            android:icon="@drawable/faq"
-            android:checkable="false"
-            android:title="FAQ"/>
 		<item
             android:id="@+id/logout"
             android:icon="@drawable/logout"

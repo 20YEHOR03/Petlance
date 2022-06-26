@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -24,7 +23,7 @@ namespace Petlance
         TextView ReplaceDocumentButton { get; set; }
         TextView BecomeExecutorButton { get; set; }
         ImageView EditButton { get; set; }
-        Bitmap Avatar { get; set; }
+        byte[] Avatar { get; set; }
         Dialog CodeDialog { get; set; }
         Dialog ChangePasswordDialog { get; set; }
         protected override void OnCreate(Bundle savedInstanceState)
@@ -34,7 +33,7 @@ namespace Petlance
             base.OnCreate(savedInstanceState);
             Error = FindViewById<TextView>(Resource.Id.error_message);
             AvatarView = FindViewById<ImageView>(Resource.Id.avatar);
-            AvatarView.SetImageBitmap(Petlance.User.Picture);
+            AvatarView.SetImageBitmap(Images.GetBitmapFromBytes(Petlance.User.Picture));
             AvatarView.Click += Avatar_Click;
             AvatarButton = FindViewById<ImageView>(Resource.Id.edit_avatar);
             AvatarButton.Click += Avatar_Click;
@@ -73,7 +72,7 @@ namespace Petlance
             EditButton = FindViewById<ImageView>(Resource.Id.edit_button);
             EditButton.Click += EditButton_Click;
 
-            CodeDialog = GetDialog(Resource.Layout.code_prompt,PopUp_Click);
+            CodeDialog = GetDialog(Resource.Layout.code_prompt, PopUp_Click);
         }
 
         private void ChangePasswordPromptButton_Click(object sender, System.EventArgs e)
@@ -193,16 +192,25 @@ namespace Petlance
         {
             try
             {
-                var results = await FilePicker.PickMultipleAsync(PickOptions.Images);
-                foreach (var result in results)
-                    if (result != null)
-                    {
-                        AvatarView.SetImageBitmap(Avatar = BitmapFactory.DecodeStream(await result.OpenReadAsync()));
-                        Petlance.User.Picture = Avatar;
-                        Petlance.User.Update();
-                    }
+                var result = await FilePicker.PickAsync(PickOptions.Images);
+                if (result != null)
+                {
+                    using var stream = await result.OpenReadAsync();
+                    using MemoryStream memoryStream = new MemoryStream();
+                    stream.CopyTo(memoryStream);
+                    Avatar = memoryStream.ToArray();
+                    Petlance.User.SetAvatar(Avatar);
+                    AvatarView.SetImageBitmap(Images.GetBitmapFromBytes(Avatar));
+                    Toggle.UpdateHeader();
+                }
             }
-            catch { }
+            catch
+            {
+                AlertDialog.Builder builder = new AlertDialog.Builder(this);
+                builder.SetTitle("Error");
+                builder.SetMessage("error loading your picture");
+                builder.Create().Show();
+            }
         }
     }
 }

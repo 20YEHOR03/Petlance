@@ -9,11 +9,6 @@
             android:icon="@drawable/no_image"
             android:checkable="false"
             android:title="Main"/>
-        <item
-            android:id="@+id/settings"
-            android:icon="@drawable/settings"
-            android:checkable="false"
-            android:title="Settings"/>
 		<item
             android:id="@+id/reports"
             android:icon="@drawable/my_orders"

@@ -78,14 +78,12 @@
     <Compile Include="Activities\Abstract\OfferListActivity.cs" />
     <Compile Include="Activities\Abstract\FilterActivity.cs" />
     <Compile Include="Activities\Abstract\DrawerActivity.cs" />
-    <Compile Include="Activities\HelpActivity.cs" />
     <Compile Include="Activities\MyOffersActivity.cs" />
     <Compile Include="Activities\OrderActivity.cs" />
     <Compile Include="Activities\UserOrdersActivity.cs" />
     <Compile Include="Activities\Abstract\PetlanceActivity.cs" />
     <Compile Include="Activities\RegisterActivity.cs" />
     <Compile Include="Activities\ReportsActivity.cs" />
-    <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="Activities\FavoritesActivity.cs" />
     <Compile Include="Activities\UserActivity.cs" />
     <Compile Include="Activities\VerifyActivity.cs" />
@@ -97,7 +95,7 @@
     <Compile Include="Veiws\AdaptiveLayout.cs" />
     <Compile Include="Utils\EmailService.cs" />
     <Compile Include="Veiws\EntityLayout.cs" />
-    <Compile Include="Veiws\DocumnetLayout.cs" />
+    <Compile Include="Veiws\DocumentLayout.cs" />
     <Compile Include="Veiws\RequestLayout.cs" />
     <Compile Include="Veiws\ReviewLayout.cs" />
     <Compile Include="Veiws\OfferLayout.cs" />

@@ -49,7 +49,7 @@ namespace Petlance
                         Id = reader.GetInt32(0),
                         Name = reader.GetString(1),
                         Email = reader.GetString(2),
-                        Picture = Images.GetBitmapFromBytes((byte[])reader[3])
+                        Picture = (byte[])reader[3]
                     }, (byte[])reader[4], reader.GetInt32(5)));
             }
             if (!hasRows && current == 0)

@@ -48,9 +48,6 @@ namespace Petlance
                 case Resource.Id.profile:
                     ShowActivity<UserActivity>();
                     break;
-                case Resource.Id.settings:
-                    ShowActivity<SettingsActivity>();
-                    break;
                 case Resource.Id.favourites:
                     ShowActivity<FavoritesActivity>();
                     break;
@@ -65,9 +62,6 @@ namespace Petlance
                     break;
                 case Resource.Id.comments:
                     ShowActivity<CommentsActivity>();
-                    break;
-                case Resource.Id.faq:
-                    ShowActivity<HelpActivity>();
                     break;
                 case Resource.Id.logout:
                     Petlance.LogOut();
