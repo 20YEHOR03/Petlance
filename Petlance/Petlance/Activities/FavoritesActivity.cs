@@ -17,8 +17,9 @@ namespace Petlance
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Activity_layout = Resource.Layout.activity_list_favorites;
             WHEREclause = $"`offer`.`id`=`animal`.`offer` AND `offer`.`id`=`favorites`.`offer` AND `favorites`.`user`={Petlance.User.Id} ";//AND `is_active`=1 ";
-            FROMclause = "`offer`, `animal`,`favorites` ";
+            FROMclause = "`offer`, `animal`, `favorites` ";
             base.OnCreate(savedInstanceState);
             SetReadOnly();
         }

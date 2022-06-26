@@ -26,17 +26,12 @@ namespace Petlance
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            Activity_layout = Resource.Layout.activity_list_offer;
             base.OnCreate(savedInstanceState);
             ListLayout = FindViewById<LinearLayout>(Resource.Id.list_layout);
             filtersButton.Click += FiltersButton_Click;
             MoreButton = FindViewById<TextView>(Resource.Id.more_button);
             MoreButton.Click += MoreButton_Click;
             MoreButton_Click(new object(), new EventArgs());
-            FloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.fab_add);
-            FloatingActionButton.Click += FabOnClick;
-            if (Petlance.User != null && Petlance.User is Executor)
-                FloatingActionButton.Visibility = ViewStates.Visible;
         }
         public void FiltersButton_Click(object sender, EventArgs e)
         {
@@ -134,6 +129,6 @@ namespace Petlance
                 }
             }
         }
-        private void FabOnClick(object sender, EventArgs eventArgs) => ShowActivity<EditOfferActivity>();
+        protected void FabOnClick(object sender, EventArgs eventArgs) => ShowActivity<EditOfferActivity>();
     }
 }

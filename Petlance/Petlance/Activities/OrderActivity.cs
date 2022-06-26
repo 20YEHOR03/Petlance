@@ -141,7 +141,7 @@ namespace Petlance
                                              $"<br><b>{DeclineDialog.FindViewById<EditText>(Resource.Id.text).Text}</b>");
             Request.Delete();
             Finish();
-            Parent.Update();
+            Parent.UpdateIncomming();
         }
     }
 }

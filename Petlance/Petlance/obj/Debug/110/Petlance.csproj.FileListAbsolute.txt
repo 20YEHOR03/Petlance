@@ -429,7 +429,6 @@ E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\review.xml
 E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\order.xml
 E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\android\src\crc64fc3325efa7b239bc\OrderLayout.java
 E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\activity_list_offer.xml
-E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\activity_list.xml
 E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\activity_list_tabbed.xml
 E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\activity_order.xml
 E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\offer_layout.xml
@@ -439,3 +438,5 @@ E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\android\src\crc64fc3325ef
 E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\price_prompt.xml
 E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\choose_pets_layout.xml
 E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\accept.xml
+E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\activity_list_favorites.xml
+E:\Source\VisualStudio\Petlance\Petlance\obj\Debug\110\res\layout\activity_comments.xml

@@ -2,7 +2,7 @@ package crc64fc3325efa7b239bc;
 
 
 public class CommentsActivity
-	extends crc64fc3325efa7b239bc.PetlanceActivity
+	extends crc64fc3325efa7b239bc.ReviewListActivity
 	implements
 		mono.android.IGCUserPeer
 {

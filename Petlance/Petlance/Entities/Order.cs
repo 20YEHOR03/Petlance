@@ -16,24 +16,33 @@ namespace Petlance
 {
     class Order : Entity
     {
-        public Order(int id, User user, Offer offer, int price, bool isPaid)
-        {
-            Id = id;
-            User = user;
-            Offer = offer;
-            Price = price;
-            IsPaid = isPaid;
-        }
 
-        public string InsertQuery => "BEGIN; INSERT INTO `order`(`user`, `offer`, `price`, `is_paid`) VALUES (@user, @offer, @price, @is_paid); SELECT LAST_INSERT_ID(); COMMIT;";
+        public string InsertQuery => "BEGIN; " +
+            "INSERT INTO `order`(`user`, `offer`, `time`, `other`, `desc`, `price`, `is_paid`, `is_accepted`) " +
+            "VALUES             (@user,  @offer,  @time,  @other,  @desc,  @price,  @is_paid,  @is_accepted); " +
+            "SELECT LAST_INSERT_ID(); " +
+            "COMMIT;";
 
-        public string UpdateQuery => "UPDATE `order` SET `user`=@user,`offer`=@offer,`price`=@price,`is_paid`=@is_paid WHERE `id`=@id";
+        public string UpdateQuery => "UPDATE `order` SET "
+            + "`user` = @user, "
+            + "`offer` = @offer, "
+            + "`time` = @time, "
+            + "`other` = @other, "
+            + "`desc` = @desc, "
+            + "`price` = @price, "
+            + "`is_paid` = @is_paid, "
+            + "`is_accepted` = @is_accepted "
+            + "WHERE `id`=@id";
 
         public int Id { get; set; }
         public User User { get; set; }
         public Offer Offer { get; set; }
+        public DateTime Time { get; set; }
         public int Price { get; set; }
         public bool IsPaid { get; set; }
+        public Dictionary<Animal, int> Animals { get; set; }
+        public string Other { get; set; }
+        public string Desc { get; set; }
         public bool Delete()
         {
             using Database database = new Database();
@@ -42,9 +51,14 @@ namespace Petlance
 
         public void Update()
         {
+            //(@user, @offer, @time, @other, @desc, @price, @is_paid, @is_accepted)
             using Database database = new Database();
             bool check = database.Check(Id, "order");
             Command command = database.Command(check ? UpdateQuery : InsertQuery);
+            command.Parameters.Add("@user", SqlType.Int32).Value = User.Id;
+            command.Parameters.Add("@offer", SqlType.Int32).Value = Offer.Id;
+            command.Parameters.Add("@price", SqlType.Int32).Value = Price;
+            command.Parameters.Add("@is_paid", SqlType.Bool).Value = IsPaid;
             command.Parameters.Add("@user", SqlType.Int32).Value = User.Id;
             command.Parameters.Add("@offer", SqlType.Int32).Value = Offer.Id;
             command.Parameters.Add("@price", SqlType.Int32).Value = Price;

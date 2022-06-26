@@ -17,10 +17,15 @@ namespace Petlance
     {
         protected override void OnCreate(Bundle savedInstanceState)
         {
+            Activity_layout = Resource.Layout.activity_list_offer;
             WHEREclause = "`offer`.`id`=`animal`.`offer` AND `is_active`=1 ";
             FROMclause = "`offer`, `animal`,`favorites` ";
             base.OnCreate(savedInstanceState);
             SetReadOnly();
+            FloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.fab_add);
+            FloatingActionButton.Click += FabOnClick;
+            if (Petlance.User != null && Petlance.User is Executor)
+                FloatingActionButton.Visibility = ViewStates.Visible;
         }
     }
 }

@@ -12,7 +12,7 @@
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
   <application android:name="android.app.Application" android:allowBackup="true" android:appComponentFactory="androidx.core.app.CoreComponentFactory" android:debuggable="true" android:extractNativeLibs="true" android:icon="@drawable/icon" android:label="Petlance" android:supportsRtl="true" android:theme="@style/AppTheme">
     <activity android:name="crc64fc3325efa7b239bc.ReviewListActivity" android:label="Favorites" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
-    <activity android:name="crc64fc3325efa7b239bc.CommentsActivity" android:label="CommentsActivity" />
+    <activity android:name="crc64fc3325efa7b239bc.CommentsActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.DocumentsActivity" android:label="Favorites" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.EditOfferActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />
     <activity android:name="crc64fc3325efa7b239bc.OfferListActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme" />

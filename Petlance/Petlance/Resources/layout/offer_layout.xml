@@ -5,97 +5,52 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-    
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:src="@drawable/no_image"
-                android:layout_width="150dp"
-                android:layout_height="150dp"
-                android:id="@+id/picture"
-                android:contentDescription="@string/default_description" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/title"
-                    android:textSize="@dimen/titleTextSize"
-                    android:text="Title"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/date"
-                    android:text="Date"/>
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/user_rating"
-                    android:textSize="@dimen/titleTextSize"/>
-                <RatingBar
-                    android:id="@+id/rating"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:numStars="5"
-                    android:scaleX=".7"
-                    android:scaleY=".7"
-                    android:transformPivotX="0dp"
-                    android:transformPivotY="0dp"
-                    android:layout_gravity="start"
-                    android:isIndicator="true"
-                    android:layout_marginRight="-16.0dp" />
+    <TextView
+        android:id="@id/initial_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Initial price: ₴"
+        android:layout_marginBottom="@dimen/horizontal_prompt_text_margin"
+        android:textSize="@dimen/abc_text_size_medium_material"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ready to pick up (prices per day):"
+        android:textSize="@dimen/titleTextSize"
+        android:layout_marginBottom="4dp"/>
+    <LinearLayout
+        android:id="@+id/pets"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Apartments photos:"
+        android:layout_marginTop="4dp"
+        android:textSize="@dimen/titleTextSize"/>
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
-            </LinearLayout>
-        </LinearLayout>
-        <TextView
-            android:id="@id/initial_price"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Initial price: ₴"
-            android:layout_marginBottom="@dimen/horizontal_prompt_text_margin"
-            android:textSize="@dimen/abc_text_size_medium_material"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Ready to pick up (prices per day):"
-            android:textSize="@dimen/titleTextSize"
-            android:layout_marginBottom="4dp"/>
         <LinearLayout
-            android:id="@+id/pets"
+            android:id="@+id/photos"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Apartments photos:"
-            android:layout_marginTop="4dp"
-            android:textSize="@dimen/titleTextSize"/>
-        <HorizontalScrollView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <LinearLayout
-                android:id="@+id/photos"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"/>
-        </HorizontalScrollView>
-        <TextView
-            android:id="@+id/desc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Description"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:textSize="@dimen/abc_text_size_medium_material"/>
-        <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="@dimen/horizontal_prompt_text_margin"
-            app:srcCompat="@drawable/map"/>
+    </HorizontalScrollView>
+    <TextView
+        android:id="@+id/desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:textSize="@dimen/abc_text_size_medium_material"/>
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="@dimen/horizontal_prompt_text_margin"
+        app:srcCompat="@drawable/map"
+        android:contentDescription="description" />
 </LinearLayout>

@@ -50,11 +50,21 @@
                 layout="@layout/content_list"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"/>
-            <include
+            <LinearLayout
                 android:id="@+id/list2"
-                layout="@layout/content_list"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:layout_height="wrap_content" >
+                <include
+                    android:id="@+id/list21"
+                    layout="@layout/content_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+                <include
+                    android:id="@+id/list22"
+                    layout="@layout/content_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+            </LinearLayout>
         </LinearLayout>
         <com.google.android.material.navigation.NavigationView
             android:id="@+id/navigationView"

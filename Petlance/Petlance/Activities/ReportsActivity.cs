@@ -21,7 +21,7 @@ namespace Petlance
         protected LinearLayout OfferLayout;
         protected override void OnCreate(Bundle savedInstanceState)
         {
-            Activity_layout = Resource.Layout.activity_list;
+            Activity_layout = Resource.Layout.activity_list_offer;
             menu_layout = Resource.Menu.no_menu;
             base.OnCreate(savedInstanceState);
             OfferLayout = FindViewById<LinearLayout>(Resource.Id.offer_layout);

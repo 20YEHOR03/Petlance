@@ -2133,25 +2133,20 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "C:\\Users\\Genei\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Projects\\Petlance\\Petlance\\Petlance\\Petlance.csproj",
+      "projectUniqueName": "E:\\Source\\Git\\Petlance\\Petlance\\Petlance\\Petlance.csproj",
       "projectName": "Petlance",
-      "projectPath": "D:\\Projects\\Petlance\\Petlance\\Petlance\\Petlance.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "D:\\Projects\\Petlance\\Petlance\\Petlance\\obj\\",
+      "projectPath": "E:\\Source\\Git\\Petlance\\Petlance\\Petlance\\Petlance.csproj",
+      "packagesPath": "C:\\Users\\Genei\\.nuget\\packages\\",
+      "outputPath": "E:\\Source\\Git\\Petlance\\Petlance\\Petlance\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\Genei\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
