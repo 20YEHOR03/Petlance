@@ -7,6 +7,7 @@ using Android.Widget;
 using AndroidX.CoordinatorLayout.Widget;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Xamarin.Essentials;
 using static Android.App.ActionBar;
 using static Petlance.AdaptiveLayout;
@@ -28,7 +29,7 @@ namespace Petlance
         protected EditText Contacts { get; set; }
         protected List<RadioButton> RadioButtons { get; set; }
         protected List<LinearLayout> Steps { get; set; }
-        protected Dictionary<ImageView, KeyValuePair<Bitmap, CoordinatorLayout>> Images { get; set; } = new Dictionary<ImageView, KeyValuePair<Bitmap, CoordinatorLayout>>();
+        protected Dictionary<ImageView, KeyValuePair<Bitmap, CoordinatorLayout>> ImagesDict { get; set; } = new Dictionary<ImageView, KeyValuePair<Bitmap, CoordinatorLayout>>();
         protected List<KeyValuePair<CheckBox, EditText>> Animals { get; set; }
         public static Offer Offer { get; set; }
 
@@ -64,7 +65,7 @@ namespace Petlance
                 FindViewById<LinearLayout>(Resource.Id.pet4),
                 FindViewById<LinearLayout>(Resource.Id.pet5)
             };
-            List<KeyValuePair<CheckBox, EditText>> Animals = new List<KeyValuePair<CheckBox, EditText>>()
+            Animals = new List<KeyValuePair<CheckBox, EditText>>()
             {
                 new KeyValuePair<CheckBox, EditText>(
                     Areas[0].FindViewById<CheckBox>(Resource.Id.checkbox),
@@ -120,30 +121,27 @@ namespace Petlance
                 var results = await FilePicker.PickMultipleAsync(PickOptions.Images);
                 foreach (var result in results)
                     if (result != null)
-                        AddImage(BitmapFactory.DecodeStream(await result.OpenReadAsync()));
+                    {
+                        using var stream = await result.OpenReadAsync();
+                        using MemoryStream memoryStream = new MemoryStream();
+                        stream.CopyTo(memoryStream);
+                        AddImage(memoryStream.ToArray());
+                    }
+
             }
             catch { }
         }
 
-        private void AddImage(Bitmap bitmap)
+        private void AddImage(byte[] bitmap)
         {
-            CoordinatorLayout layout = new CoordinatorLayout(this)
-            {
-                LayoutParameters = new LayoutParams(90 * vmin, 90 * vmin)
-            };
-            ImageView image = new ImageView(this)
-            {
-                LayoutParameters = new LayoutParams(90 * vmin, 90 * vmin)
-            };
-            image.SetImageBitmap(bitmap);
-            ImageView button = new ImageView(this)
-            {
-                LayoutParameters = new LayoutParams(10 * vmin, 10 * vmin)
-            };
+            CoordinatorLayout layout = new CoordinatorLayout(this) { LayoutParameters = new LayoutParams(90 * vmin, 90 * vmin) };
+            ImageView image = new ImageView(this) { LayoutParameters = new LayoutParams(90 * vmin, 90 * vmin) };
+            image.SetImageBitmap(Images.GetBitmapFromBytes(bitmap));
+            ImageView button = new ImageView(this) { LayoutParameters = new LayoutParams(10 * vmin, 10 * vmin) };
             button.SetImageResource(Resource.Drawable.ic_mtrl_chip_close_circle);
             button.SetBackgroundResource(Resource.Drawable.external_login_button_backgroud);
             button.Click += DeleteImageButton_Click;
-            Images.Add(button, new KeyValuePair<Bitmap, CoordinatorLayout>(bitmap, layout));
+            ImagesDict.Add(button, new KeyValuePair<Bitmap, CoordinatorLayout>(Images.GetBitmapFromBytes(bitmap), layout));
             layout.AddView(image);
             layout.AddView(button);
             Photos.AddView(layout);
@@ -151,9 +149,9 @@ namespace Petlance
 
         private void DeleteImageButton_Click(object sender, EventArgs e)
         {
-            var pair = Images[sender as ImageView];
+            var pair = ImagesDict[sender as ImageView];
             Photos.RemoveView(pair.Value);
-            Images.Remove(sender as ImageView);
+            ImagesDict.Remove(sender as ImageView);
         }
         private void NextButton_Click(object sender, EventArgs e)
         {
@@ -161,10 +159,10 @@ namespace Petlance
             {
                 if (OfferTitle.Text != "")
                 {
-                    List<Bitmap> bitmaps = new List<Bitmap>();
+                    List<byte[]> bitmaps = new List<byte[]>();
                     List<Animal> animals = new List<Animal>();
-                    foreach (var pair in Images)
-                        bitmaps.Add(pair.Value.Key);
+                    foreach (var pair in ImagesDict)
+                        bitmaps.Add(Images.GetBytesFromBitmap(pair.Value.Key));
                     for (int i = 0; i < Animals.Count; i++)
                         if (Animals[i].Key.Checked)
                             animals.Add(new Animal(i, Convert.ToInt32(Animals[i].Value.Text)));
@@ -183,7 +181,7 @@ namespace Petlance
                         bitmaps.ToArray())
                     { Id = Offer.Id};
                     Offer.Update();
-                    ShowActivity<MainActivity>();
+                    Finish();
                     return;
                 }
                 else checkedIndex--;

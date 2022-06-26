@@ -94,10 +94,10 @@ namespace Petlance
                 pets.AddView(layout);
             }
             LinearLayout photos = activity.FindViewById<LinearLayout>(Resource.Id.photos);
-            foreach (Bitmap photo in offer.Photos)
+            foreach (byte[] photo in offer.Photos)
             {
                 ImageView imageView = new ImageView(activity) { LayoutParameters = new LayoutParams(60 * vh, 60 * vh) };
-                try { imageView.SetImageBitmap(photo); }
+                try { imageView.SetImageBitmap(Images.GetBitmapFromBytes(photo)); }
                 catch { imageView.SetImageResource(Resource.Drawable.no_image); }
                 int TopPadding = 2 * vh;
                 int BottomPadding = 2 * vh;

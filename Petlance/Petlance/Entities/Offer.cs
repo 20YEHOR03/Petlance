@@ -33,7 +33,7 @@ namespace Petlance
                      Executor executor,
                      bool entopped,
                      Animal[] animals,
-                     Bitmap[] photos)
+                     byte[][] photos)
         {
             Title = title;
             ShortDescription = shortDescription;
@@ -58,7 +58,7 @@ namespace Petlance
         public Executor Executor { get; set; }
         public bool Entopped { get; set; }
         public Animal[] Animals { get; set; }
-        public Bitmap[] Photos { get; set; }
+        public byte[][] Photos { get; set; }
         public static Offer GetOfferById(int id)
         {
             Offer offer = null;
@@ -90,12 +90,12 @@ namespace Petlance
                         price: reader.GetInt32(reader.GetOrdinal("price"))));
             offer.Animals = animals.ToArray();
 
-            List<Bitmap> photos = new List<Bitmap>();
+            List<byte[]> photos = new List<byte[]>();
             command = database.Command("SELECT `photo` FROM `offer_photo` WHERE `offer`=@offer");
             command.Parameters.Add("@offer", SqlType.Int32).Value = id;
             using (Reader reader = command.ExecuteReader())
                 while (reader.Read())
-                    photos.Add(Images.GetBitmapFromBytes((byte[])reader[0]));
+                    photos.Add((byte[])reader[0]);
             offer.Photos = photos.ToArray();
 
             return offer;
@@ -142,10 +142,10 @@ namespace Petlance
             command.ExecuteNonQuery();
             command = database.Command("INSERT INTO `offer_photo`(`photo`, `offer`) VALUES (@photo, @offer)");
             if (Photos != null)
-                foreach (Bitmap bitmap in Photos)
+                foreach (byte[] bitmap in Photos)
                 {
                     command.Parameters.Add("@offer", SqlType.Int32).Value = Id;
-                    command.Parameters.Add("@photo", SqlType.Blob).Value = Images.GetBytesFromBitmap(bitmap);
+                    command.Parameters.Add("@photo", SqlType.Blob).Value = bitmap;
                     command.ExecuteNonQuery();
                     command.Parameters.Clear();
                 }
