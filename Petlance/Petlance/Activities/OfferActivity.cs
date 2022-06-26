@@ -1,6 +1,5 @@
 ﻿using Android.App;
 using Android.Content.PM;
-using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
@@ -34,7 +33,7 @@ namespace Petlance
 
             TakeButton = FindViewById<TextView>(Resource.Id.take_button);
             TakeButton.Click += TakeButton_Click;
-            TakeButton.Visibility = Offer.IsActive ? ViewStates.Visible : ViewStates.Gone;
+            TakeButton.Visibility = ((Petlance.Admin == null) && Offer.IsActive) ? ViewStates.Visible : ViewStates.Gone;
             if (Petlance.User is Executor)
                 TakeButton.Visibility = (Petlance.User as Executor).Id == Offer.Executor.Id ? ViewStates.Gone : ViewStates.Visible;
 
@@ -71,64 +70,86 @@ namespace Petlance
             int AnimalSize = 7 * vmin;
             activity.FindViewById<TextView>(Resource.Id.initial_price).Text += offer.InitialPrice;
             LinearLayout pets = activity.FindViewById<LinearLayout>(Resource.Id.pets);
-            foreach (Animal animal in offer.Animals)
-            {
-                LinearLayout layout = new LinearLayout(activity)
-                {
-                    LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.MatchParent),
-                    Orientation = Orientation.Vertical
-                };
-                layout.SetPadding(0, 0, 2 * vh, 0);
-                layout.SetGravity(GravityFlags.Center);
-                TextView price = new TextView(activity)
+            if (offer.Animals.Length == 0)
+                pets.AddView(new TextView(activity)
                 {
                     LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
-                    Text = "$" + animal.Price
-                };
-                ImageView icon = new ImageView(activity) { LayoutParameters = new LayoutParams(AnimalSize, AnimalSize) };
-                icon.SetImageResource(animal.GetResourceType());
-                layout.AddView(icon);
-                layout.AddView(price);
-                layout.SetMinimumWidth(price.Width);
-                pets.AddView(layout);
-            }
+                    Text = "No pets chosen"
+                });
+            else
+                foreach (Animal animal in offer.Animals)
+                {
+                    LinearLayout layout = new LinearLayout(activity)
+                    {
+                        LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.MatchParent),
+                        Orientation = Orientation.Vertical
+                    };
+                    layout.SetPadding(0, 0, 2 * vh, 0);
+                    layout.SetGravity(GravityFlags.Center);
+                    TextView price = new TextView(activity)
+                    {
+                        LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
+                        Text = "$" + animal.Price
+                    };
+                    ImageView icon = new ImageView(activity) { LayoutParameters = new LayoutParams(AnimalSize, AnimalSize) };
+                    icon.SetImageResource(animal.GetResourceType());
+                    layout.AddView(icon);
+                    layout.AddView(price);
+                    layout.SetMinimumWidth(price.Width);
+                    pets.AddView(layout);
+                }
             LinearLayout photos = activity.FindViewById<LinearLayout>(Resource.Id.photos);
-            foreach (byte[] photo in offer.Photos)
-            {
-                ImageView imageView = new ImageView(activity) { LayoutParameters = new LayoutParams(60 * vh, 60 * vh) };
-                try { imageView.SetImageBitmap(Images.GetBitmapFromBytes(photo)); }
-                catch { imageView.SetImageResource(Resource.Drawable.no_image); }
-                int TopPadding = 2 * vh;
-                int BottomPadding = 2 * vh;
-                int RightPadding = 2 * vw;
-                int LeftPadding = 2 * vw;
-                imageView.SetPadding(left: LeftPadding,
-                       top: TopPadding,
-                       right: RightPadding,
-                       bottom: BottomPadding);
-                photos.AddView(imageView);
-            }
+            if (offer.Photos.Length == 0)
+                photos.AddView(new TextView(activity)
+                {
+                    LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
+                    Text = "No photos"
+                });
+            else
+                foreach (byte[] photo in offer.Photos)
+                {
+                    ImageView imageView = new ImageView(activity) { LayoutParameters = new LayoutParams(60 * vh, 60 * vh) };
+                    try { imageView.SetImageBitmap(Images.GetBitmapFromBytes(photo)); }
+                    catch { imageView.SetImageResource(Resource.Drawable.no_image); }
+                    int TopPadding = 2 * vh;
+                    int BottomPadding = 2 * vh;
+                    int RightPadding = 2 * vw;
+                    int LeftPadding = 2 * vw;
+                    imageView.SetPadding(left: LeftPadding,
+                           top: TopPadding,
+                           right: RightPadding,
+                           bottom: BottomPadding);
+                    photos.AddView(imageView);
+                }
         }
         private void OtherCheckBox_Click(object sender, EventArgs e) => OtherEditText.Visibility = OtherCheckBox.Checked ? ViewStates.Visible : ViewStates.Gone;
 
         private void Send_Click(object sender, EventArgs e)
         {
-            Order order = new Order(id: -1,
-                                          user: Petlance.User,
-                                          offer: Offer,
-                                          time: DateTime.Now,
-                                          price: 0,
-                                          isPaid: false,
-                                          animals: new Dictionary<Animal, int>(),
-                                          other: SendDialog.FindViewById<EditText>(Resource.Id.other).Text,
-                                          desc: SendDialog.FindViewById<EditText>(Resource.Id.desc).Text,
-                                          isAccepted: false);
-            List<Animal> animals = new List<Animal>();
-            for (int i = 0; i < Animals.Count; i++)
-                if (Animals[i].Key.Checked)
-                    order.Animals.Add(new Animal(i), Convert.ToInt32(Animals[i].Value.Text));
-            order.Send();
-            TakeButton.Visibility = ViewStates.Gone;
+
+            EditText daysEditText = SendDialog.FindViewById<EditText>(Resource.Id.days);
+            if(daysEditText.Text != "" && daysEditText.Text != "0")
+            {
+                Order order = new Order(id: -1,
+                                              user: Petlance.User,
+                                              offer: Offer,
+                                              time: DateTime.Now,
+                                              price: 0,
+                                              isPaid: false,
+                                              animals: new Dictionary<Animal, int>(),
+                                              other: SendDialog.FindViewById<EditText>(Resource.Id.other).Text,
+                                              desc: SendDialog.FindViewById<EditText>(Resource.Id.desc).Text,
+                                              isAccepted: false,
+                                              days: Convert.ToInt32(daysEditText.Text));
+                List<Animal> animals = new List<Animal>();
+                for (int i = 0; i < Animals.Count; i++)
+                    if (Animals[i].Key.Checked)
+                        order.Animals.Add(new Animal(i), Convert.ToInt32(Animals[i].Value.Text));
+                order.Send();
+                TakeButton.Visibility = ViewStates.Gone;
+            }
+            else
+                GetDialog("", "Please write days count", "OK");
         }
         private void TakeButton_Click(object sender, EventArgs e)
         {

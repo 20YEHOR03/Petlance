@@ -5,7 +5,7 @@
     <SelectedDevice>Samsung SM-M127F</SelectedDevice>
     <SelectedPlatformGroup>PhysicalDevice</SelectedPlatformGroup>
     <ActiveDebugProfile>Samsung SM-M127F</ActiveDebugProfile>
-    <AndroidDesignerPreferredDevice>Nexus 4</AndroidDesignerPreferredDevice>
+    <AndroidDesignerPreferredDevice>Nexus 10</AndroidDesignerPreferredDevice>
     <DefaultDevice>pixel_5_-_api_30</DefaultDevice>
   </PropertyGroup>
 </Project>

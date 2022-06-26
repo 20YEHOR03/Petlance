@@ -16,25 +16,9 @@ namespace Petlance
     static class Petlance
     {
         public static IAccount Account { get; set; }
-        public static User User
-        {
-            get
-            {
-                if (Account != null && Account is User)
-                    return (User)Account;
-                return null;
-            }
-        }
+        public static User User => (Account != null && Account is User) ? (User)Account : null;
 
-        public static Admin Admin
-        {
-            get
-            {
-                if (Account != null && Account is Admin)
-                    return (Admin)Account;
-                return null;
-            }
-        }
+        public static Admin Admin => (Account != null && Account is Admin) ? (Admin)Account : null;
         public static void LogOut()
         {
             Account = null;

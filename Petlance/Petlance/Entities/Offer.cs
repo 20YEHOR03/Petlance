@@ -107,7 +107,7 @@ namespace Petlance
             Command command = database.Command(check ? UpdateQuery : InsertQuery);
             command.Parameters.Add("@title", SqlType.String).Value = Title;
             command.Parameters.Add("@short_desc", SqlType.String).Value = ShortDescription;
-            command.Parameters.Add("@description", SqlType.String).Value = Description;
+            command.Parameters.Add("@description", SqlType.Text).Value = Description;
             command.Parameters.Add("@initial_price", SqlType.Int32).Value = InitialPrice;
             command.Parameters.Add("@contacts", SqlType.String).Value = Contacts;
             command.Parameters.Add("@is_active", SqlType.Bool).Value = IsActive;

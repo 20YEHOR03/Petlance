@@ -26,7 +26,8 @@ namespace Petlance
                      Dictionary<Animal, int> animals,
                      string other,
                      string desc,
-                     bool isAccepted)
+                     bool isAccepted,
+                     int days)
         {
             Id = id;
             User = user;
@@ -38,11 +39,12 @@ namespace Petlance
             Other = other;
             Desc = desc;
             IsAccepted = isAccepted;
+            Days = days;
         }
 
         public string InsertQuery => "BEGIN; " +
-            "INSERT INTO `order`(`user`, `offer`, `time`, `other`, `desc`, `price`, `is_paid`, `is_accepted`) " +
-            "VALUES             (@user,  @offer,  @time,  @other,  @desc,  @price,  @is_paid,  @is_accepted); " +
+            "INSERT INTO `order`(`user`, `offer`, `time`, `other`, `desc`, `price`, `is_paid`, `is_accepted`, `days`) " +
+            "VALUES             (@user,  @offer,  @time,  @other,  @desc,  @price,  @is_paid,  @is_accepted,  @days); " +
             "SELECT LAST_INSERT_ID(); " +
             "COMMIT;";
 
@@ -54,7 +56,8 @@ namespace Petlance
             + "`desc` = @desc, "
             + "`price` = @price, "
             + "`is_paid` = @is_paid, "
-            + "`is_accepted` = @is_accepted "
+            + "`is_accepted` = @is_accepted, "
+            + "`days` = @days "
             + "WHERE `id`=@id";
 
         public int Id { get; set; }
@@ -67,6 +70,7 @@ namespace Petlance
         public Dictionary<Animal, int> Animals { get; set; }
         public string Other { get; set; }
         public string Desc { get; set; }
+        public int Days { get; set; }
         public bool Delete()
         {
             using Database database = new Database();
@@ -87,6 +91,7 @@ namespace Petlance
             command.Parameters.Add("@price", SqlType.Int32).Value = Price;
             command.Parameters.Add("@is_paid", SqlType.Bool).Value = IsPaid;
             command.Parameters.Add("@is_accepted", SqlType.Bool).Value = IsAccepted;
+            command.Parameters.Add("@days", SqlType.Int32).Value = Days;
             if (check)
             {
                 command.Parameters.Add("@id", SqlType.Int32).Value = Id;

@@ -13,7 +13,7 @@ namespace Petlance
     public abstract class PetlanceActivity : AppCompatActivity
     {
         protected int Activity_layout { get; set; }
-        public static Type Prev { get; set; }
+        public static PetlanceActivity Prev { get; set; }
         protected SupportToolbar Toolbar { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
@@ -42,6 +42,22 @@ namespace Petlance
         {
             Android.App.AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(this);
             ad.SetPositiveButton("Confirm", PopUp_Click);
+            return ad.Create();
+        }
+        protected Dialog GetDialog(string title, string message, string button, System.EventHandler<DialogClickEventArgs> PopUp_Click)
+        {
+            Android.App.AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(this);
+            ad.SetTitle(title);
+            ad.SetMessage(message);
+            ad.SetPositiveButton(button, PopUp_Click);
+            return ad.Create();
+        }
+        protected Dialog GetDialog(string title, string message, string button)
+        {
+            Android.App.AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(this);
+            ad.SetTitle(title);
+            ad.SetMessage(message);
+            ad.SetPositiveButton(button, (sender, e) => { });
             return ad.Create();
         }
 

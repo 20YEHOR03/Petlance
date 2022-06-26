@@ -186,7 +186,7 @@ namespace Petlance
                         bitmaps.ToArray())
                     { Id = Offer.Id};
                     Offer.Update();
-                    Parent.Recreate();
+                    Prev.Recreate();
                     Finish();
                     return;
                 }

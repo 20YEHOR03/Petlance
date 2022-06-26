@@ -40,7 +40,7 @@ namespace Petlance
             {
                 OrderActivity.Order = Order;
                 OrderActivity.Type = OrderType;
-                OrderActivity.Parent = Context as UserOrdersActivity;
+                OrderActivity.Prev = Context as UserOrdersActivity;
                 (Context as PetlanceActivity).ShowActivity<OrderActivity>();
             }
         }

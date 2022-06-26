@@ -129,6 +129,10 @@ namespace Petlance
                 }
             }
         }
-        protected void FabOnClick(object sender, EventArgs eventArgs) => ShowActivity<EditOfferActivity>();
+        protected void FabOnClick(object sender, EventArgs eventArgs)
+        {
+            EditOfferActivity.Prev = this;
+            ShowActivity<EditOfferActivity>();
+        }
     }
 }

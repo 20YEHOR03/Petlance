@@ -105,6 +105,7 @@ namespace Petlance
             if ((Context is PetlanceActivity) && ((sender as FloatingActionButton) == editButton))
             {
                 EditOfferActivity.Offer = Offer.GetOfferById(offer.Id);
+                EditOfferActivity.Prev = Context as PetlanceActivity;
                 (Context as PetlanceActivity).ShowActivity<EditOfferActivity>();
             }
         }

@@ -18,12 +18,11 @@ namespace Petlance
         int totalPrice;
         private CheckBox checkBox;
         private Discount discount;
-        public static UserOrdersActivity Parent { get; set; }
         protected Dialog Review { get; set; }
         public static OrderType Type { get; set; }
         public static Order Order { get; set; }
         protected TextView RightButton { get; set; }
-        protected TextView LeftBUtton { get; set; }
+        protected TextView LeftButton { get; set; }
         protected Dialog AcceptDialog { get; set; }
         List<LinearLayout> Animals { get; set; }
         protected int TotalCalculatedPrice { get; set; }
@@ -36,29 +35,40 @@ namespace Petlance
             base.OnCreate(savedInstanceState);
             OfferActivity.Initialize(this, Order.Offer);
             RightButton = FindViewById<TextView>(Resource.Id.accept_button);
-            LeftBUtton = FindViewById<TextView>(Resource.Id.decline_button);
-            TotalCalculatedPrice = Order.Offer.InitialPrice;
-            Dictionary<int, Animal> animals = Order.Offer.GetAnimalDictionary();
-            foreach (var animal in Order.Animals)
-                TotalCalculatedPrice += animal.Value * animals[animal.Key.Type].Price;
+            LeftButton = FindViewById<TextView>(Resource.Id.decline_button);
+            FindViewById<TextView>(Resource.Id.days).Text += Order.Days;
             if (Type == OrderType.Outgoing)
             {
-                LeftBUtton.Text = "Add review";
-                LeftBUtton.Click += AddReviewButton_Click;
-                if (Order.IsPaid)
-                    RightButton.Visibility = ViewStates.Gone;
+                LeftButton.Text = "Add review";
+                LeftButton.Click += AddReviewButton_Click;
+                if (Order.IsAccepted)
+                {
+                    FindViewById<TextView>(Resource.Id.total_calculated_price).Text = $"Total price: {Order.Price}";
+                    if (Order.IsPaid)
+                        RightButton.Visibility = ViewStates.Gone;
+                    else
+                    {
+                        RightButton.Text = "Pay";
+                        RightButton.Click += PayButton_Click;
+                    }
+                }
                 else
                 {
-                    RightButton.Text = "Pay";
-                    RightButton.Click += PayButton_Click;
+                    FindViewById<TextView>(Resource.Id.total_calculated_price).Visibility = ViewStates.Gone;
+                    RightButton.Visibility = ViewStates.Gone;
                 }
-                FindViewById<TextView>(Resource.Id.total_calculated_price).Text = $"Total price: {Order.Price}";
+
             }
             else
             {
+                TotalCalculatedPrice = Order.Offer.InitialPrice;
+                Dictionary<int, Animal> animals = Order.Offer.GetAnimalDictionary();
+                foreach (var animal in Order.Animals)
+                    TotalCalculatedPrice += animal.Value * animals[animal.Key.Type].Price;
+                TotalCalculatedPrice *= Order.Days;
                 RightButton.Click += AcceptButton_Click;
-                LeftBUtton.Click += DeclineButton_Click;
-                FindViewById<TextView>(Resource.Id.total_calculated_price).Text += TotalCalculatedPrice;
+                LeftButton.Click += DeclineButton_Click;
+                FindViewById<TextView>(Resource.Id.total_calculated_price).Text += $"Total calculated price: {TotalCalculatedPrice}";
             }
             Animals = new List<LinearLayout>
             {
@@ -164,7 +174,7 @@ namespace Petlance
             ad.SetMessage("Cheque sent");
             ad.SetPositiveButton("OK", (sender, e) => {
                 Finish();
-                Parent.UpdateIncomming();
+                Prev.Recreate();
              });
             ad.Create().Show();
         }
@@ -188,7 +198,7 @@ namespace Petlance
                                              $"<br><b>{DeclineDialog.FindViewById<EditText>(Resource.Id.text).Text}</b>");
             Order.Delete();
             Finish();
-            Parent.UpdateIncomming();
+            Prev.Recreate();
         }
     }
 }

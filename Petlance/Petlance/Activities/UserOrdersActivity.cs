@@ -65,7 +65,7 @@ namespace Petlance
             List<Order> orders = new List<Order>();
             using Database database = new Database();
             Command command = database.Command(
-                "SELECT `id`, `user`, `offer`, `time`, `price`, `is_paid`, `other`, `desc`, `is_accepted` "
+                "SELECT `id`, `user`, `offer`, `time`, `price`, `is_paid`, `other`, `desc`, `is_accepted`, `days` "
                 + " FROM `order` "
                 + " WHERE `user`=@id "
                 + $" ORDER BY `time` DESC LIMIT {current[1]}, {Count} ");
@@ -82,7 +82,8 @@ namespace Petlance
                         animals: new Dictionary<Animal, int>(),
                         other: reader.GetString(6),
                         desc: reader.GetString(7),
-                        isAccepted: reader.GetBoolean(8)));
+                        isAccepted: reader.GetBoolean(8),
+                        days: reader.GetInt32(9)));
             foreach (Order order in orders)
             {
                 command = database.Command("SELECT `animal`, `count` FROM `order_animal` WHERE `order`=@order ");
@@ -117,24 +118,25 @@ namespace Petlance
                 + "`order`.`offer`, "
                 + "`order`.`time`, "
                 + "`order`.`other`, "
-                + "`order`.`desc` "
+                + "`order`.`desc`, "
+                + "`order`.`days` "
                 + " FROM `order`, `offer` "
                 + "WHERE `order`.`offer`=`offer`.`id` AND `offer`.`executor`=@id AND `order`.`is_accepted`=0"
                 + $" ORDER BY `order`.`time` DESC LIMIT {current[0]}, {Count} ");
             command.Parameters.Add("@id", SqlType.Int32).Value = Petlance.User.Id;
             using (Reader reader = command.ExecuteReader())
                 while (reader.Read())
-                    orders.Add(new Order(
-                        reader.GetInt32(0),
-                        User.GetUserById(reader.GetInt32(1)),
-                        Offer.GetOfferById(reader.GetInt32(2)),
-                        reader.GetDateTime(3),
-                        0,
-                        false,
-                        new Dictionary<Animal, int>(),
-                        reader.GetString(4),
-                        reader.GetString(5),
-                        false));
+                    orders.Add(new Order(id: reader.GetInt32(0),
+                                         user: User.GetUserById(reader.GetInt32(1)),
+                                         offer: Offer.GetOfferById(reader.GetInt32(2)),
+                                         time: reader.GetDateTime(3),
+                                         price: 0,
+                                         isPaid: false,
+                                         animals: new Dictionary<Animal, int>(),
+                                         other: reader.GetString(4),
+                                         desc: reader.GetString(5),
+                                         isAccepted: false,
+                                         days: reader.GetInt32(6)));
             foreach (Order order in orders)
             {
                 command = database.Command("SELECT `animal`, `count` FROM `order_animal` WHERE `order`=@order ");
