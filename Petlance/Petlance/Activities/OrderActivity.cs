@@ -15,6 +15,9 @@ namespace Petlance
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/AppTheme")]
     class OrderActivity : DrawerActivity
     {
+        int totalPrice;
+        private CheckBox checkBox;
+        private Discount discount;
         public static UserOrdersActivity Parent { get; set; }
         protected Dialog Review { get; set; }
         public static OrderType Type { get; set; }
@@ -129,9 +132,6 @@ namespace Petlance
             DeclineDialog = ad.Create();
             DeclineDialog.Show();
         }
-        int totalPrice;
-        private CheckBox checkBox;
-        private Discount discount;
 
         private void AcceptButton_Click(object sender, EventArgs e)
         {
@@ -163,6 +163,8 @@ namespace Petlance
             ad.SetMessage("Cheque sent");
             ad.SetPositiveButton("OK", (sender, e) => { });
             ad.Create().Show();
+            Finish();
+            Parent.UpdateIncomming();
         }
         private void AddReviewButton_Click(object sender, EventArgs e) => Review.Show();
 
