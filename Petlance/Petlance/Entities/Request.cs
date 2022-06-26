@@ -19,6 +19,7 @@ namespace Petlance
             Desc = desc;
         }
 
+        public tempDELETEMEPLS;
         public int Id { get; set; }
         public User User { get; set; }
         public Offer Offer { get; set; }
