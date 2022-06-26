@@ -26,7 +26,7 @@ namespace Petlance
                                            password: hash,
                                            phone: userReader.GetString(userReader.GetOrdinal("tel")),
                                            email: userReader.GetString(userReader.GetOrdinal("email")),
-                                           paws: (uint)userReader.GetInt32(userReader.GetOrdinal("paws")),
+                                           paws: userReader.GetInt32(userReader.GetOrdinal("paws")),
                                            picture: Images.GetBitmapFromBytes((byte[])userReader["picture"]),
                                            id: userReader.GetInt32(userReader.GetOrdinal("id")));
                 }

@@ -95,6 +95,9 @@ namespace Petlance
             else using (Reader reader = command.ExecuteReader())
                     if(reader.Read())
                         Id = reader.GetInt32(0);
+            command = database.Command("DELETE FROM `order_animal` WHERE `order`=@order");
+            command.Parameters.Add("@order", SqlType.Int32).Value = Id;
+            command.ExecuteNonQuery();
             command = database.Command("INSERT INTO `order_animal`(`order`,`animal`,`count`) VALUES (@order, @animal, @count)");
             foreach (var animal in Animals)
             {

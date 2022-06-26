@@ -61,7 +61,6 @@ namespace Petlance
         
         protected void MoreButton_Click2(object sender, EventArgs e)
         {
-            bool hasRows = false;
             int prev = current[1];
             List<Order> orders = new List<Order>();
             using Database database = new Database();
@@ -72,8 +71,6 @@ namespace Petlance
                 + $" ORDER BY `time` DESC LIMIT {current[1]}, {Count} ");
             command.Parameters.Add("@id", SqlType.Int32).Value = Petlance.User.Id;
             using (Reader reader = command.ExecuteReader())
-            {
-                hasRows = reader.HasRows;
                 while (reader.Read())
                     orders.Add(new Order(
                         id: reader.GetInt32(0),
@@ -86,7 +83,6 @@ namespace Petlance
                         other: reader.GetString(6),
                         desc: reader.GetString(7),
                         isAccepted: reader.GetBoolean(8)));
-            }
             foreach (Order order in orders)
             {
                 command = database.Command("SELECT `animal`, `count` FROM `order_animal` WHERE `order`=@order ");
@@ -97,11 +93,11 @@ namespace Petlance
                 current[1]++;
                 ListLayout[1].AddView((View)new OrderLayout(this, order, OrderType.Outgoing));
             }
-            if (!hasRows && current[1] == 0)
+            if (orders.Count == 0 && current[1] == 0)
             {
                 TextView view = new TextView(this)
                 {
-                    LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
+                    LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent),
                     Text = "No orders"
                 };
                 view.SetForegroundGravity(Android.Views.GravityFlags.Start);
@@ -111,7 +107,6 @@ namespace Petlance
         }
         protected void MoreButton_Click1(object sender, EventArgs e)
         {
-            bool hasRows = false;
             int prev = current[0];
             List<Order> orders = new List<Order>();
             using Database database = new Database();
@@ -128,8 +123,6 @@ namespace Petlance
                 + $" ORDER BY `order`.`time` DESC LIMIT {current[0]}, {Count} ");
             command.Parameters.Add("@id", SqlType.Int32).Value = Petlance.User.Id;
             using (Reader reader = command.ExecuteReader())
-            {
-                hasRows = reader.HasRows;
                 while (reader.Read())
                     orders.Add(new Order(
                         reader.GetInt32(0),
@@ -142,7 +135,6 @@ namespace Petlance
                         reader.GetString(4),
                         reader.GetString(5),
                         false));
-            }
             foreach (Order order in orders)
             {
                 command = database.Command("SELECT `animal`, `count` FROM `order_animal` WHERE `order`=@order ");
@@ -153,15 +145,15 @@ namespace Petlance
                 current[0]++;
                 ListLayout[0].AddView((View)new OrderLayout(this, order, OrderType.Incomming));
             }
-            if (!hasRows && current[0] == 0)
+            if (orders.Count==0 && current[0] == 0)
             {
                 TextView view = new TextView(this)
                 {
-                    LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
+                    LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent),
                     Text = "No orders"
                 };
                 view.SetForegroundGravity(Android.Views.GravityFlags.Start);
-                ListLayout[1].AddView(view);
+                ListLayout[0].AddView(view);
             }
             MoreButton[0].Visibility = (current[0] % Count == 0 && prev != current[0]) ? ViewStates.Visible : ViewStates.Gone;
         }
@@ -172,7 +164,7 @@ namespace Petlance
             current[1] = 0;
             while (x > 0)
             {
-                MoreButton_Click2(new object(), new EventArgs());
+                MoreButton_Click1(new object(), new EventArgs());
                 x -= Count;
             }
         }

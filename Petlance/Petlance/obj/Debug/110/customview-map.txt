@@ -24,6 +24,7 @@ cache-path;E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\lp\38\jl\res\x
 CheckBox;obj\Debug\110\res\layout\choose_pets_layout.xml
 CheckBox;obj\Debug\110\res\layout\filters.xml
 CheckBox;obj\Debug\110\res\layout\order.xml
+CheckBox;obj\Debug\110\res\layout\payment.xml
 color;obj\Debug\110\res\values\colors.xml
 com.google.android.material.floatingactionbutton.FloatingActionButton;obj\Debug\110\res\layout\activity_docs.xml
 com.google.android.material.floatingactionbutton.FloatingActionButton;obj\Debug\110\res\layout\activity_list_offer.xml
@@ -57,6 +58,7 @@ EditText;obj\Debug\110\res\layout\content_user.xml
 EditText;obj\Debug\110\res\layout\decline.xml
 EditText;obj\Debug\110\res\layout\filters.xml
 EditText;obj\Debug\110\res\layout\order.xml
+EditText;obj\Debug\110\res\layout\payment.xml
 EditText;obj\Debug\110\res\layout\price_prompt.xml
 EditText;obj\Debug\110\res\layout\review.xml
 external-cache-path;E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
@@ -141,6 +143,7 @@ LinearLayout;obj\Debug\110\res\layout\filters.xml
 LinearLayout;obj\Debug\110\res\layout\header.xml
 LinearLayout;obj\Debug\110\res\layout\offer_layout.xml
 LinearLayout;obj\Debug\110\res\layout\order.xml
+LinearLayout;obj\Debug\110\res\layout\payment.xml
 LinearLayout;obj\Debug\110\res\layout\price_prompt.xml
 LinearLayout;obj\Debug\110\res\layout\review.xml
 menu;obj\Debug\110\res\menu\edit.xml
@@ -207,5 +210,6 @@ TextView;obj\Debug\110\res\layout\filters.xml
 TextView;obj\Debug\110\res\layout\header.xml
 TextView;obj\Debug\110\res\layout\offer_layout.xml
 TextView;obj\Debug\110\res\layout\order.xml
+TextView;obj\Debug\110\res\layout\payment.xml
 TextView;obj\Debug\110\res\layout\price_prompt.xml
 TextView;obj\Debug\110\res\layout\review.xml

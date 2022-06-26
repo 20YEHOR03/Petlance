@@ -12,7 +12,7 @@ namespace Petlance
     {
         public User()
         { }
-        public User(string name, string password, string phone, string email, uint? paws, Bitmap picture, int id)
+        public User(string name, string password, string phone, string email, int paws, Bitmap picture, int id)
         {
             Name = name;
             Password = password;
@@ -27,7 +27,7 @@ namespace Petlance
 
         public string Name { get; set; } = null;
         public string Password { get; set; }
-        public uint? Paws { get; set; } = null;
+        public int Paws { get; set; } = 0;
         public string Email { get; set; }
         public string Phone { get; set; } = null;
         public int Id { get; set; }
@@ -103,7 +103,7 @@ namespace Petlance
                                     password: reader.GetString(reader.GetOrdinal("password")),
                                     phone: reader.GetString(reader.GetOrdinal("tel")),
                                     email: reader.GetString(reader.GetOrdinal("email")),
-                                    paws: (uint)reader.GetInt32(reader.GetOrdinal("paws")),
+                                    paws: reader.GetInt32(reader.GetOrdinal("paws")),
                                     picture: Images.GetBitmapFromBytes((byte[])reader["picture"]),
                                     id: id);
                 }

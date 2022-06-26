@@ -89,6 +89,7 @@
     <Compile Include="Activities\FavoritesActivity.cs" />
     <Compile Include="Activities\UserActivity.cs" />
     <Compile Include="Activities\VerifyActivity.cs" />
+    <Compile Include="Entities\Discount.cs" />
     <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Utils\Images.cs" />
@@ -486,6 +487,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_comments.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\payment.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>

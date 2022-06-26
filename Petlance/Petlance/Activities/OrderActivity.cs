@@ -19,8 +19,8 @@ namespace Petlance
         protected Dialog Review { get; set; }
         public static OrderType Type { get; set; }
         public static Order Order { get; set; }
-        protected TextView AcceptButton { get; set; }
-        protected TextView DeclineButton { get; set; }
+        protected TextView RightButton { get; set; }
+        protected TextView LeftBUtton { get; set; }
         protected Dialog AcceptDialog { get; set; }
         List<LinearLayout> Animals { get; set; }
         protected int TotalCalculatedPrice { get; set; }
@@ -32,28 +32,31 @@ namespace Petlance
             menu_layout = Resource.Menu.no_menu;
             base.OnCreate(savedInstanceState);
             OfferActivity.Initialize(this, Order.Offer);
-            AcceptButton = FindViewById<TextView>(Resource.Id.accept_button);
-            DeclineButton = FindViewById<TextView>(Resource.Id.decline_button);
+            RightButton = FindViewById<TextView>(Resource.Id.accept_button);
+            LeftBUtton = FindViewById<TextView>(Resource.Id.decline_button);
             TotalCalculatedPrice = Order.Offer.InitialPrice;
             Dictionary<int, Animal> animals = Order.Offer.GetAnimalDictionary();
             foreach (var animal in Order.Animals)
                 TotalCalculatedPrice += animal.Value * animals[animal.Key.Type].Price;
             if (Type == OrderType.Outgoing)
             {
-                AcceptButton.Text = "Add review";
-                FindViewById<TextView>(Resource.Id.total_calculated_price).Visibility = 
-                    DeclineButton.Visibility = ViewStates.Gone;
-                AcceptButton.Click += AddReviewButton_Click;
+                LeftBUtton.Text = "Add review";
+                LeftBUtton.Click += AddReviewButton_Click;
+                if (Order.IsPaid)
+                    RightButton.Visibility = ViewStates.Gone;
+                else
+                {
+                    RightButton.Text = "Pay";
+                    RightButton.Click += PayButton_Click;
+                }
+                FindViewById<TextView>(Resource.Id.total_calculated_price).Text = $"Total price: {Order.Price}";
             }
             else
             {
-                AcceptButton.Click += AcceptButton_Click;
+                RightButton.Click += AcceptButton_Click;
+                LeftBUtton.Click += DeclineButton_Click;
                 FindViewById<TextView>(Resource.Id.total_calculated_price).Text += TotalCalculatedPrice;
             }
-            DeclineButton.Click += DeclineButton_Click;
-            AlertDialog.Builder builder = new AlertDialog.Builder(this);
-            builder.SetTitle("Accept");
-            //builder.SetView();
             Animals = new List<LinearLayout>
             {
                 FindViewById<LinearLayout>(Resource.Id.pet0),
@@ -83,6 +86,40 @@ namespace Petlance
             Review = alert.Create();
         }
 
+        private void PayButton_Click(object sender, EventArgs e)
+        {
+            AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(this);
+            ad.SetTitle("Pseudopayments");
+            ad.SetView(Resource.Layout.payment);
+            ad.SetPositiveButton("Confirm", Pay);
+            ad.SetNegativeButton("Cancel", (sender, e) => { });
+            DeclineDialog = ad.Create();
+            DeclineDialog.Show();
+            discount = new Discount
+            {
+                Price = Order.Price,
+                Paws = Petlance.User.Paws
+            };
+            DeclineDialog.FindViewById<TextView>(Resource.Id.start_price).Text += Order.Price;
+            DeclineDialog.FindViewById<TextView>(Resource.Id.available_paws).Text += $"{discount.AvailablePaws}/{Petlance.User.Paws}";
+            TextView totalPrice = DeclineDialog.FindViewById<TextView>(Resource.Id.total_price);
+            checkBox = DeclineDialog.FindViewById<CheckBox>(Resource.Id.use_paws);
+            checkBox.CheckedChange += delegate
+            {
+                discount.Paws = checkBox.Checked ? Petlance.User.Paws : 0;
+                totalPrice.Text = $"Total price: {discount.DiscountedPrice}";
+            };
+        }
+        private void Pay(object sender, EventArgs e)
+        {
+            RightButton.Visibility = ViewStates.Gone;
+            Order.IsPaid = true;
+            Order.Update();
+            Petlance.User.Paws -= discount.AvailablePaws;
+            Petlance.User.Paws += discount.DiscountCashback;
+            Petlance.User.Update();
+        }
+
         private void DeclineButton_Click(object sender, EventArgs e)
         {
             AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(this);
@@ -93,6 +130,9 @@ namespace Petlance
             DeclineDialog.Show();
         }
         int totalPrice;
+        private CheckBox checkBox;
+        private Discount discount;
+
         private void AcceptButton_Click(object sender, EventArgs e)
         {
             AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(this);
@@ -107,7 +147,7 @@ namespace Petlance
             textView.Text += TotalCalculatedPrice;
             editText.TextChanged += delegate
             {
-                totalPrice = (TotalCalculatedPrice + (editText.Text == "" ? 0 : Convert.ToInt32(editText.Text)));
+                totalPrice = TotalCalculatedPrice + (editText.Text == "" ? 0 : Convert.ToInt32(editText.Text));
                 textView.Text = "Total price: " + totalPrice;
             };
 
@@ -117,6 +157,7 @@ namespace Petlance
         {
             Order.Price = totalPrice;
             Order.IsAccepted = true;
+            Order.Price = discount.DiscountedPrice;
             Order.Send();
             AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(this);
             ad.SetMessage("Cheque sent");

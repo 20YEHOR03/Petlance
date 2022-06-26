@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <TextView
+        android:id="@+id/start_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Price: $"/>
+    <TextView
+        android:id="@+id/available_paws"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Available paws: "/>
+    <CheckBox
+        android:id="@+id/use_paws"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Use paws discount"/>
+    <TextView
+        android:id="@+id/total_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Total price: $"/>
+</LinearLayout>

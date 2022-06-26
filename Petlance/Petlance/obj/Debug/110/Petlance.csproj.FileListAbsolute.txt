@@ -879,3 +879,4 @@ E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\stamp\_ConvertResourcesCa
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\stamp\_GenerateJavaStubs.stamp
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\stamp\_GeneratePackageManagerJava.stamp
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\stamp\_ResolveLibraryProjectImports.stamp
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\payment.xml
