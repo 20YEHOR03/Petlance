@@ -57,7 +57,7 @@ namespace Petlance
                 TextView view = new TextView(this)
                 {
                     LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
-                    Text = "No offers"
+                    Text = "No documnets to verify"
                 };
                 view.SetForegroundGravity(Android.Views.GravityFlags.Start);
                 ListLayout.AddView(view);

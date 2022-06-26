@@ -99,7 +99,7 @@ namespace Petlance
             var filePath = System.IO.Path.Combine(FileSystem.AppDataDirectory, "document.pdf");
             if (File.Exists(filePath))
                 File.Delete(filePath);
-            byte[] bytes = (Petlance.User as Executor).Document;
+            byte[] bytes = Document;
             try { File.WriteAllBytes(filePath, bytes); }
             catch { Dialog.Show(); }
             await Launcher.OpenAsync(new OpenFileRequest { File = new ReadOnlyFile(filePath) });
