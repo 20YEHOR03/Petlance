@@ -18,7 +18,7 @@ namespace Petlance
         public static UserOrdersActivity Parent { get; set; }
         protected Dialog Review { get; set; }
         public static OrderType Type { get; set; }
-        public static Request Request { get; set; }
+        public static Order Order { get; set; }
         protected TextView AcceptButton { get; set; }
         protected TextView DeclineButton { get; set; }
         protected Dialog AcceptDialog { get; set; }
@@ -31,12 +31,12 @@ namespace Petlance
             Activity_layout = Resource.Layout.activity_order;
             menu_layout = Resource.Menu.no_menu;
             base.OnCreate(savedInstanceState);
-            OfferActivity.Initialize(this, Request.Offer);
+            OfferActivity.Initialize(this, Order.Offer);
             AcceptButton = FindViewById<TextView>(Resource.Id.accept_button);
             DeclineButton = FindViewById<TextView>(Resource.Id.decline_button);
-            TotalCalculatedPrice = Request.Offer.InitialPrice;
-            Dictionary<int, Animal> animals = Request.Offer.GetAnimalDictionary();
-            foreach (var animal in Request.Animals)
+            TotalCalculatedPrice = Order.Offer.InitialPrice;
+            Dictionary<int, Animal> animals = Order.Offer.GetAnimalDictionary();
+            foreach (var animal in Order.Animals)
                 TotalCalculatedPrice += animal.Value * animals[animal.Key.Type].Price;
             if (Type == OrderType.Outgoing)
             {
@@ -65,14 +65,14 @@ namespace Petlance
             };
             foreach (var item in Animals)
                 item.Visibility = ViewStates.Gone;
-            foreach(var animal in Request.Animals)
+            foreach(var animal in Order.Animals)
             {
                 Animals[animal.Key.Type].Visibility = ViewStates.Visible;
                 Animals[animal.Key.Type].FindViewById<CheckBox>(Resource.Id.checkbox).Visibility = ViewStates.Gone;
                 Animals[animal.Key.Type].FindViewById<EditText>(Resource.Id.editText).Text = animal.Value.ToString();
             }
-            FindViewById<EditText>(Resource.Id.other).Text = Request.Other;
-            FindViewById<EditText>(Resource.Id.addins).Text = Request.Desc;
+            FindViewById<EditText>(Resource.Id.other).Text = Order.Other;
+            FindViewById<EditText>(Resource.Id.addins).Text = Order.Desc;
 
 
             AlertDialog.Builder alert = new AlertDialog.Builder(this);
@@ -115,7 +115,9 @@ namespace Petlance
 
         private void Accept(object sender, EventArgs e)
         {
-            new Order(-1, Request.User, Request.Offer, totalPrice, false).Send();
+            Order.Price = totalPrice;
+            Order.IsAccepted = true;
+            Order.Send();
             AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(this);
             ad.SetMessage("Cheque sent");
             ad.SetPositiveButton("OK", (sender, e) => { });
@@ -126,10 +128,10 @@ namespace Petlance
         private void Confirm_Click(object sender, EventArgs e)
         {
             List<Animal> animals = new List<Animal>();
-            foreach(var animal in Request.Animals)
+            foreach(var animal in Order.Animals)
                 animals.Add(animal.Key);
             new Review(0, Petlance.User,
-                Request.Offer.Executor,
+                Order.Offer.Executor,
                 Review.FindViewById<EditText>(Resource.Id.text).Text,
                 Review.FindViewById<RatingBar>(Resource.Id.rating).Rating,
                 animals.ToArray(),
@@ -137,9 +139,9 @@ namespace Petlance
         }
         private async void Decline(object sender, EventArgs e)
         {
-            await EmailService.SendEmail(Request.User, "Order", "Your order was declined. The reasons are:" +
+            await EmailService.SendEmail(Order.User, "Order", "Your order was declined. The reasons are:" +
                                              $"<br><b>{DeclineDialog.FindViewById<EditText>(Resource.Id.text).Text}</b>");
-            Request.Delete();
+            Order.Delete();
             Finish();
             Parent.UpdateIncomming();
         }

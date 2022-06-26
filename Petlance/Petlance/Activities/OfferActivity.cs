@@ -114,18 +114,21 @@ namespace Petlance
 
         private void Send_Click(object sender, EventArgs e)
         {
-            Request request = new Request(id: -1,
+            Order order = new Order(id: -1,
                                           user: Petlance.User,
                                           offer: Offer,
                                           time: DateTime.Now,
+                                          price: 0,
+                                          isPaid: false,
                                           animals: new Dictionary<Animal, int>(),
                                           other: SendDialog.FindViewById<EditText>(Resource.Id.other).Text,
-                                          desc: SendDialog.FindViewById<EditText>(Resource.Id.desc).Text);
+                                          desc: SendDialog.FindViewById<EditText>(Resource.Id.desc).Text,
+                                          isAccepted: false);
             List<Animal> animals = new List<Animal>();
             for (int i = 0; i < Animals.Count; i++)
                 if (Animals[i].Key.Checked)
-                    request.Animals.Add(new Animal(i), Convert.ToInt32(Animals[i].Value.Text));
-            request.Send();
+                    order.Animals.Add(new Animal(i), Convert.ToInt32(Animals[i].Value.Text));
+            order.Send();
             TakeButton.Visibility = ViewStates.Gone;
         }
         private void TakeButton_Click(object sender, EventArgs e)

@@ -2,7 +2,7 @@ package crc64fc3325efa7b239bc;
 
 
 public class OrderLayout
-	extends crc64fc3325efa7b239bc.EntityLayout
+	extends android.widget.LinearLayout
 	implements
 		mono.android.IGCUserPeer
 {
@@ -36,6 +36,14 @@ public class OrderLayout
 		super (p0, p1, p2);
 		if (getClass () == OrderLayout.class)
 			mono.android.TypeManager.Activate ("Petlance.OrderLayout, Petlance", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android:System.Int32, mscorlib", this, new java.lang.Object[] { p0, p1, p2 });
+	}
+
+
+	public OrderLayout (android.content.Context p0, android.util.AttributeSet p1, int p2, int p3)
+	{
+		super (p0, p1, p2, p3);
+		if (getClass () == OrderLayout.class)
+			mono.android.TypeManager.Activate ("Petlance.OrderLayout, Petlance", "Android.Content.Context, Mono.Android:Android.Util.IAttributeSet, Mono.Android:System.Int32, mscorlib:System.Int32, mscorlib", this, new java.lang.Object[] { p0, p1, p2, p3 });
 	}
 
 	private java.util.ArrayList refList;

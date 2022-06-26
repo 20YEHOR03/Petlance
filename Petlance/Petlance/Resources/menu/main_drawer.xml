@@ -24,7 +24,11 @@
             android:icon="@drawable/favorite_menu"
             android:checkable="false"
             android:title="Favourites"/>
-		android:title="My comments"/>
+		<item
+            android:id="@+id/my_offers"
+            android:icon="@drawable/my_orders"
+            android:checkable="false"
+            android:title="My offers"/>
 		<item
             android:id="@+id/promote"
             android:icon="@drawable/favorite_menu"

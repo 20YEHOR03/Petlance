@@ -97,7 +97,6 @@
     <Compile Include="Utils\EmailService.cs" />
     <Compile Include="Veiws\EntityLayout.cs" />
     <Compile Include="Veiws\DocumnetLayout.cs" />
-    <Compile Include="Veiws\OrderLayout.cs" />
     <Compile Include="Veiws\RequestLayout.cs" />
     <Compile Include="Veiws\ReviewLayout.cs" />
     <Compile Include="Veiws\OfferLayout.cs" />

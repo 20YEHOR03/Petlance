@@ -7,14 +7,15 @@ using static Petlance.AdaptiveLayout;
 
 namespace Petlance
 {
-    class RequestLayout : LinearLayout
+    class OrderLayout : LinearLayout
     {
-        private OrderType orderType;
-        Request Request { get; set; }
-        public RequestLayout(Context context, Request request, OrderType orderType) : base(context)
+        Order Order { get; set; }
+        OrderType OrderType { get; set; }
+
+        public OrderLayout(Context context, Order order, OrderType orderType) : base(context)
         {
-            Request = request;
-            this.orderType = orderType;
+            Order = order;
+            OrderType = orderType;
             Initialize();
         }
         private void Initialize()
@@ -37,8 +38,8 @@ namespace Petlance
         {
             if (Context is PetlanceActivity)
             {
-                OrderActivity.Request = Request;
-                OrderActivity.Type = orderType;
+                OrderActivity.Order = Order;
+                OrderActivity.Type = OrderType;
                 OrderActivity.Parent = Context as UserOrdersActivity;
                 (Context as PetlanceActivity).ShowActivity<OrderActivity>();
             }

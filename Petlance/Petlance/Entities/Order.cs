@@ -17,6 +17,29 @@ namespace Petlance
     class Order : Entity
     {
 
+        public Order(int id,
+                     User user,
+                     Offer offer,
+                     DateTime time,
+                     int price,
+                     bool isPaid,
+                     Dictionary<Animal, int> animals,
+                     string other,
+                     string desc,
+                     bool isAccepted)
+        {
+            Id = id;
+            User = user;
+            Offer = offer;
+            Time = time;
+            Price = price;
+            IsPaid = isPaid;
+            Animals = animals;
+            Other = other;
+            Desc = desc;
+            IsAccepted = isAccepted;
+        }
+
         public string InsertQuery => "BEGIN; " +
             "INSERT INTO `order`(`user`, `offer`, `time`, `other`, `desc`, `price`, `is_paid`, `is_accepted`) " +
             "VALUES             (@user,  @offer,  @time,  @other,  @desc,  @price,  @is_paid,  @is_accepted); " +
@@ -40,6 +63,7 @@ namespace Petlance
         public DateTime Time { get; set; }
         public int Price { get; set; }
         public bool IsPaid { get; set; }
+        public bool IsAccepted { get; set; }
         public Dictionary<Animal, int> Animals { get; set; }
         public string Other { get; set; }
         public string Desc { get; set; }
@@ -57,12 +81,12 @@ namespace Petlance
             Command command = database.Command(check ? UpdateQuery : InsertQuery);
             command.Parameters.Add("@user", SqlType.Int32).Value = User.Id;
             command.Parameters.Add("@offer", SqlType.Int32).Value = Offer.Id;
+            command.Parameters.Add("@time", SqlType.DateTime).Value = Time;
+            command.Parameters.Add("@other", SqlType.String).Value = Other;
+            command.Parameters.Add("@desc", SqlType.String).Value = Desc;
             command.Parameters.Add("@price", SqlType.Int32).Value = Price;
             command.Parameters.Add("@is_paid", SqlType.Bool).Value = IsPaid;
-            command.Parameters.Add("@user", SqlType.Int32).Value = User.Id;
-            command.Parameters.Add("@offer", SqlType.Int32).Value = Offer.Id;
-            command.Parameters.Add("@price", SqlType.Int32).Value = Price;
-            command.Parameters.Add("@is_paid", SqlType.Bool).Value = IsPaid;
+            command.Parameters.Add("@is_accepted", SqlType.Bool).Value = IsAccepted;
             if (check)
             {
                 command.Parameters.Add("@id", SqlType.Int32).Value = Id;
@@ -71,12 +95,22 @@ namespace Petlance
             else using (Reader reader = command.ExecuteReader())
                     if(reader.Read())
                         Id = reader.GetInt32(0);
+            command = database.Command("INSERT INTO `order_animal`(`order`,`animal`,`count`) VALUES (@order, @animal, @count)");
+            foreach (var animal in Animals)
+            {
+                command.Parameters.Add("@order", SqlType.Int32).Value = Id;
+                command.Parameters.Add("@animal", SqlType.Int32).Value = animal.Key.Type;
+                command.Parameters.Add("@count", SqlType.Int32).Value = animal.Value;
+                command.ExecuteNonQuery();
+                command.Parameters.Clear();
+            }
 
         }
 
-        public void Send()
+        public void Send() => Update();
+
+        public void Apply()
         {
-            Update();
         }
     }
 }
