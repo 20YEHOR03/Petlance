@@ -24,7 +24,7 @@ namespace Petlance
             Activity_layout = Resource.Layout.activity_list_offer;
             menu_layout = Resource.Menu.no_menu;
             base.OnCreate(savedInstanceState);
-            OfferLayout = FindViewById<LinearLayout>(Resource.Id.offer_layout);
+            OfferLayout = FindViewById<LinearLayout>(Resource.Id.list_layout);
             moreButton = FindViewById<TextView>(Resource.Id.more_button);
             moreButton.Click += MoreButton_Click;
             MoreButton_Click(new object(), new EventArgs());
@@ -82,7 +82,7 @@ namespace Petlance
                 TextView view = new TextView(this)
                 {
                     LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
-                    Text = "No offers"
+                    Text = "No reports"
                 };
                 view.SetForegroundGravity(Android.Views.GravityFlags.Start);
                 OfferLayout.AddView(view);

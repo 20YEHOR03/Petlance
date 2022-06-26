@@ -112,6 +112,11 @@ namespace Petlance
                 foreach (var photo in Offer.Photos)
                     AddImage(photo);
             }
+            else
+            {
+                Offer = new Offer();
+                Contacts.Text = $"Email: {Petlance.User.Email}\nPhone: {Petlance.User.Phone}";
+            }
         }
 
         private async void AddPhotoButton_Click(object sender, EventArgs e)
@@ -181,6 +186,7 @@ namespace Petlance
                         bitmaps.ToArray())
                     { Id = Offer.Id};
                     Offer.Update();
+                    Parent.Recreate();
                     Finish();
                     return;
                 }

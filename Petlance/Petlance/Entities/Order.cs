@@ -111,9 +111,5 @@ namespace Petlance
         }
 
         public void Send() => Update();
-
-        public void Apply()
-        {
-        }
     }
 }

@@ -14,8 +14,10 @@
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.CommentsActivity" />
     <activity android:label="Favorites" android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.DocumentsActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.EditOfferActivity" />
+    <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.HelpActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.MyOffersActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.OrderActivity" />
+    <activity android:label="SettingsActivity" android:name="crc64fc3325efa7b239bc.SettingsActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.UserOrdersActivity" />
     <activity android:noHistory="true" android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.RegisterActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.ReportsActivity" />

@@ -54,9 +54,9 @@ namespace Petlance
         public string Description { get; set; }
         public int InitialPrice { get; set; }
         public string Contacts { get; set; }
-        public bool IsActive { get; set; }
+        public bool IsActive { get; set; } = true;
         public Executor Executor { get; set; }
-        public bool Entopped { get; set; }
+        public bool Entopped { get; set; } = false;
         public Animal[] Animals { get; set; }
         public byte[][] Photos { get; set; }
         public static Offer GetOfferById(int id)

@@ -19,7 +19,7 @@ namespace Petlance
         {
             Activity_layout = Resource.Layout.activity_list_offer;
             WHEREclause = "`offer`.`id`=`animal`.`offer` AND `is_active`=1 ";
-            FROMclause = "`offer`, `animal`,`favorites` ";
+            FROMclause = "`offer`, `animal` ";
             base.OnCreate(savedInstanceState);
             SetReadOnly();
             FloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.fab_add);

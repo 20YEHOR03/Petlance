@@ -21,7 +21,6 @@ namespace Petlance
         protected Dialog SendDialog { get; set; }
         protected TextView ContactsButton { get; set; }
         protected TextView TakeButton { get; set; }
-        protected TextView AddReviewButton { get; set; }
         protected CheckBox OtherCheckBox { get; set; }
         protected EditText OtherEditText { get; set; }
         List<LinearLayout> Areas { get; set; }
