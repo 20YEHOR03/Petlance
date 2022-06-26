@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Petlance.Admin" BaseTypeListCollapsed="true">
+    <Position X="8.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgCAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAEAA=</HashCode>
+      <FileName>Account\Admin.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Petlance.Executor">
+    <Position X="0.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAEAAAAAQAAAAEAAAAAAAAAIAAAACAAAAAAAAIAA=</HashCode>
+      <FileName>Account\Executor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.User">
+    <Position X="2.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCAAAAACQAgAAkAIAAAAQAAAEFAAACAAAQAgAAAAA=</HashCode>
+      <FileName>Account\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Petlance.LoginActivity">
+    <Position X="4.5" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAhAAAAAAgAAAAAAEEoAAiAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Activities\LoginActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.MainActivity" BaseTypeListCollapsed="true">
+    <Position X="8.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAIAAAgCAAgAAEAAAAAgAAAAA=</HashCode>
+      <FileName>Activities\MainActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.RegisterActivity">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABgAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Activities\RegisterActivity.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.AdditionalService">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AdditionalService.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.Animal" Collapsed="true">
+    <Position X="10.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Animal.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.Database" BaseTypeListCollapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAIAEAAAABBAAAAAEACAAAABAAAACAAAA=</HashCode>
+      <FileName>Database.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="Petlance.Dispute" Collapsed="true">
+    <Position X="13.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABACAAAgAgAAYAAAAEAQAAAAEAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>Dispute.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.Offer" Collapsed="true">
+    <Position X="11.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ZAQAAAQARAAgAEQAMAAUABAAEAAAAAAAAAAABCAAAAA=</HashCode>
+      <FileName>Offer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.Petlance">
+    <Position X="14.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Petlance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.PetlanceActivity">
+    <Position X="1.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Petlance.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.Review">
+    <Position X="13.75" Y="3.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Review.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.SecurePasswordHasher">
+    <Position X="4.5" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAQAAgAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>SecurePasswordHasher.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.TakenOffer">
+    <Position X="12.5" Y="1.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>TakenOffer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.LinkView">
+    <Position X="10.5" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Veiws\LinkView.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="Petlance.Account">
+    <Position X="6.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAkAAAACAAAQCAAAAAA=</HashCode>
+      <FileName>Account\Account.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
