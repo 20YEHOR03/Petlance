@@ -9,11 +9,11 @@ namespace Petlance
     {
         public static MySqlConnectionStringBuilder connectionStringBuilder = new MySqlConnectionStringBuilder()
         {
-            Server = "192.168.0.128",
+            Server = "www.db4free.net",
             Database = "petlance",
-            UserID = "petlance",
+            UserID = "geneirodan",
             Port = 3306,
-            Password = "8UQV4geB5Qyk*aIZ"
+            Password = "5d22cd83"
         };
 
         public MySqlConnection Connection { get; set; }
