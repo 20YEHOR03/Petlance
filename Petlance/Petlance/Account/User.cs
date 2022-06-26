@@ -8,7 +8,7 @@ using SqlType = MySqlConnector.MySqlDbType;
 
 namespace Petlance
 {
-    class User : IAccount, Entity
+    public class User : IAccount
     {
         public User()
         { }

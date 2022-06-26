@@ -11,7 +11,7 @@ using System.Text;
 
 namespace Petlance
 {
-    class Discount
+    public class Discount
     {
         public int Price { get; set; }
         public int MaxDiscount => Math.Min(Price / 4, 300);

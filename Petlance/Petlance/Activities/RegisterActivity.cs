@@ -20,6 +20,7 @@ namespace Petlance
         TextView error;
         TextView button;
         Dialog dialog;
+
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Activity_layout = Resource.Layout.activity_register;

@@ -7,20 +7,16 @@
     -->
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.geneirodan.petlance" android:installLocation="auto">
   <uses-sdk android:minSdkVersion="24" android:targetSdkVersion="30" />
-  <uses-permission android:name="android.permission.INTERNET" />
   <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+  <uses-permission android:name="android.permission.INTERNET" />
   <application android:allowBackup="true" android:icon="@drawable/icon" android:label="Petlance" android:supportsRtl="true" android:theme="@style/AppTheme" android:name="android.app.Application" android:debuggable="true" android:extractNativeLibs="true">
-    <activity android:label="Favorites" android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.ReviewListActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.CommentsActivity" />
     <activity android:label="Favorites" android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.DocumentsActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.EditOfferActivity" />
-    <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.OfferListActivity" />
-    <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.DrawerActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.MyOffersActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.OrderActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.UserOrdersActivity" />
-    <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.PetlanceActivity" />
     <activity android:noHistory="true" android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.RegisterActivity" />
     <activity android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.ReportsActivity" />
     <activity android:label="Favorites" android:screenOrientation="portrait" android:theme="@style/AppTheme" android:name="crc64fc3325efa7b239bc.FavoritesActivity" />

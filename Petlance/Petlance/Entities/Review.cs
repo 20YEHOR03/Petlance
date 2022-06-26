@@ -5,7 +5,7 @@ using Reader = MySqlConnector.MySqlDataReader;
 using SqlType = MySqlConnector.MySqlDbType;
 namespace Petlance
 {
-    class Review : Entity
+    public class Review
     {
         public Review(int id, User user, Executor executor, string description, float rate, Animal[] animals, DateTime date)
         {

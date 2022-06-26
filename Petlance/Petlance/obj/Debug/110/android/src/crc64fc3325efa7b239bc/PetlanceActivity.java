@@ -1,7 +1,7 @@
 package crc64fc3325efa7b239bc;
 
 
-public class PetlanceActivity
+public abstract class PetlanceActivity
 	extends androidx.appcompat.app.AppCompatActivity
 	implements
 		mono.android.IGCUserPeer

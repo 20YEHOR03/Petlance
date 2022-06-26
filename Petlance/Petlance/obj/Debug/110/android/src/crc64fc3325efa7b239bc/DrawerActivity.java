@@ -1,7 +1,7 @@
 package crc64fc3325efa7b239bc;
 
 
-public class DrawerActivity
+public abstract class DrawerActivity
 	extends crc64fc3325efa7b239bc.PetlanceActivity
 	implements
 		mono.android.IGCUserPeer,

@@ -10,7 +10,7 @@ using SupportToolbar = AndroidX.AppCompat.Widget.Toolbar;
 namespace Petlance
 {
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/AppTheme")]
-    public class PetlanceActivity : AppCompatActivity
+    public abstract class PetlanceActivity : AppCompatActivity
     {
         protected int Activity_layout { get; set; }
         public static Type Prev { get; set; }
@@ -44,16 +44,13 @@ namespace Petlance
             ad.SetPositiveButton("Confirm", PopUp_Click);
             return ad.Create();
         }
-        //public override void OnBackPressed()
-        //{
-        //    if (Prev != null)
-        //    {
-        //        ShowActivity(Prev);
-        //        Finish();
-        //    }
-        //    else
-        //        base.OnBackPressed();
 
-        //}
+        protected void NotImplemented(object sender, EventArgs e)
+        {
+            AndroidX.AppCompat.App.AlertDialog.Builder builder = new AndroidX.AppCompat.App.AlertDialog.Builder(this);
+            builder.SetTitle("Error");
+            builder.SetMessage("Work in progress");
+            builder.Create().Show();
+        }
     }
 }

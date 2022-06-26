@@ -14,7 +14,7 @@ using SqlType = MySqlConnector.MySqlDbType;
 namespace Petlance
 {
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/AppTheme")]
-    public class OfferListActivity : FilterActivity
+    public abstract class OfferListActivity : FilterActivity
     {
         protected int current = 0;
         protected int Count = 10;

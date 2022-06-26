@@ -6,7 +6,7 @@ using SqlType = MySqlConnector.MySqlDbType;
 
 namespace Petlance
 {
-    class Executor : User
+    public class Executor : User
     {
         public Executor(string name,
                         string password,

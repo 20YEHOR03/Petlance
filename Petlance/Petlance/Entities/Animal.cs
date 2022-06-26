@@ -5,7 +5,7 @@ using SqlType = MySqlConnector.MySqlDbType;
 
 namespace Petlance
 {
-    internal class Animal
+    public class Animal
     {
 
         public Animal(int type, int price = 0)

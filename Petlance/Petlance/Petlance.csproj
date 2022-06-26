@@ -78,8 +78,10 @@
     <Compile Include="Activities\Abstract\OfferListActivity.cs" />
     <Compile Include="Activities\Abstract\FilterActivity.cs" />
     <Compile Include="Activities\Abstract\DrawerActivity.cs" />
+    <Compile Include="Activities\HelpActivity.cs" />
     <Compile Include="Activities\MyOffersActivity.cs" />
     <Compile Include="Activities\OrderActivity.cs" />
+    <Compile Include="Activities\SettingsActivity.cs" />
     <Compile Include="Activities\UserOrdersActivity.cs" />
     <Compile Include="Activities\Abstract\PetlanceActivity.cs" />
     <Compile Include="Activities\RegisterActivity.cs" />
@@ -88,7 +90,6 @@
     <Compile Include="Activities\UserActivity.cs" />
     <Compile Include="Activities\VerifyActivity.cs" />
     <Compile Include="Entities\Discount.cs" />
-    <Compile Include="Entities\Entity.cs" />
     <Compile Include="Entities\Order.cs" />
     <Compile Include="Utils\Images.cs" />
     <Compile Include="Utils\PetlanceSupportActionBArDrawerToggle.cs" />
@@ -112,7 +113,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entities\Review.cs" />
     <Compile Include="Utils\SecurePasswordHasher.cs" />
-    <Compile Include="Entities\Request.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram1.cd" />

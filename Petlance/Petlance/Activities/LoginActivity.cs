@@ -1,4 +1,5 @@
 ﻿using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.OS;
 using Android.Widget;
@@ -14,6 +15,7 @@ namespace Petlance
         LinkTextView unauthorizedLink;
         LinkTextView registerLink;
         LinkTextView forgotLink;
+        LinearLayout GoogleAuthButton { get; set; }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Activity_layout = Resource.Layout.activity_login;
@@ -30,6 +32,8 @@ namespace Petlance
                 }
                 else Petlance.LogOut();
             }
+            GoogleAuthButton = FindViewById<LinearLayout>(Resource.Id.google_auth);
+            GoogleAuthButton.Click += NotImplemented;
             button = FindViewById<TextView>(Resource.Id.enterButton);
             button.Click += loginButton_Click;
             unauthorizedLink = FindViewById<LinkTextView>(Resource.Id.unauthorizedLink);
@@ -39,6 +43,7 @@ namespace Petlance
             forgotLink = FindViewById<LinkTextView>(Resource.Id.forgotLink);
             forgotLink.Click += forgotLink_Click;
         }
+
 
         protected void loginButton_Click(object sender, EventArgs e)
         {

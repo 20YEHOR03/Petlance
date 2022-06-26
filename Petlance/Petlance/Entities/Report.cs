@@ -15,7 +15,7 @@ using SqlType = MySqlConnector.MySqlDbType;
 
 namespace Petlance
 {
-    class Report
+    public class Report
     {
         public Report(Offer offer, string reason, string type, Bitmap[] photos)
         {

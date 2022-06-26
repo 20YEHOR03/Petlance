@@ -1,7 +1,7 @@
 package crc64fc3325efa7b239bc;
 
 
-public class OfferListActivity
+public abstract class OfferListActivity
 	extends crc64fc3325efa7b239bc.FilterActivity
 	implements
 		mono.android.IGCUserPeer

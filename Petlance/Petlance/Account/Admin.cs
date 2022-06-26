@@ -4,7 +4,7 @@ using Command = MySqlConnector.MySqlCommand;
 
 namespace Petlance
 {
-    class Admin : IAccount
+    public class Admin : IAccount
     {
         private string login;
 

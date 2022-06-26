@@ -14,7 +14,7 @@ using SqlType = MySqlConnector.MySqlDbType;
 
 namespace Petlance
 {
-    class Order : Entity
+    public class Order
     {
 
         public Order(int id,

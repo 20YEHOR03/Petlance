@@ -13,7 +13,7 @@ using SqlType = MySqlConnector.MySqlDbType;
 namespace Petlance
 {
     [Activity(Label = "Favorites", ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/AppTheme")]
-    class ReviewListActivity : DrawerActivity
+    public abstract class ReviewListActivity : DrawerActivity
     {
         protected int current = 0;
         protected int ReviewCount = 3;

@@ -6,7 +6,7 @@ using SqlType = MySqlConnector.MySqlDbType;
 
 namespace Petlance
 {
-    class Offer : Entity
+    public class Offer
     {
         public string UpdateQuery => "UPDATE `offer` SET `title`=@title," +
                         "`short_desc`=@short_desc," +

@@ -1,7 +1,7 @@
 package crc64fc3325efa7b239bc;
 
 
-public class ReviewListActivity
+public abstract class ReviewListActivity
 	extends crc64fc3325efa7b239bc.DrawerActivity
 	implements
 		mono.android.IGCUserPeer

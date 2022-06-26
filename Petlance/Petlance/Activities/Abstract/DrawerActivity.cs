@@ -12,7 +12,7 @@ using SupportActionBarDrawerToggle = AndroidX.AppCompat.App.ActionBarDrawerToggl
 namespace Petlance
 {
     [Activity(ScreenOrientation = ScreenOrientation.Portrait, Theme = "@style/AppTheme")]
-    public class DrawerActivity : PetlanceActivity, NavigationView.IOnNavigationItemSelectedListener
+    public abstract class DrawerActivity : PetlanceActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         protected int menu_layout;
         protected View menu;
