@@ -21,17 +21,4 @@
             android:id="@+id/photos_create"
             android:orientation="horizontal"/>
     </HorizontalScrollView>
-    <TextView
-        android:id="@+id/add_photo"
-        android:text="@string/add_photo"
-        android:textSize="@dimen/balance_textSize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:background="@drawable/enter_button"
-        android:paddingLeft="@dimen/activity_horizontal_margin"
-        android:paddingRight="@dimen/activity_horizontal_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_marginLeft="@dimen/activity_vertical_margin"
-        android:layout_marginRight="@dimen/activity_vertical_margin"/>
 </LinearLayout>

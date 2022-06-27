@@ -1,10 +1,14 @@
 ﻿using Android.App;
 using Android.Content.PM;
+using Android.Graphics;
 using Android.OS;
 using Android.Views;
 using Android.Widget;
+using AndroidX.CoordinatorLayout.Widget;
 using System;
 using System.Collections.Generic;
+using System.IO;
+using Xamarin.Essentials;
 using static Android.App.ActionBar;
 using static Petlance.AdaptiveLayout;
 
@@ -20,17 +24,18 @@ namespace Petlance
         protected Dialog SendDialog { get; set; }
         protected TextView ContactsButton { get; set; }
         protected TextView TakeButton { get; set; }
+        protected TextView ReportButton { get; set; }
         protected CheckBox OtherCheckBox { get; set; }
         protected EditText OtherEditText { get; set; }
+        protected LinearLayout Photos { get; set; }
         List<LinearLayout> Areas { get; set; }
-
+        protected Dictionary<ImageView, KeyValuePair<byte[], CoordinatorLayout>> ImagesDict { get; set; } = new Dictionary<ImageView, KeyValuePair<byte[], CoordinatorLayout>>();
         List<KeyValuePair<CheckBox, EditText>> Animals { get; set; }
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Activity_layout = Resource.Layout.activity_offer;
             menu_layout = Resource.Menu.favorite;
             base.OnCreate(savedInstanceState);
-
             TakeButton = FindViewById<TextView>(Resource.Id.take_button);
             TakeButton.Click += TakeButton_Click;
             TakeButton.Visibility = ((Petlance.Admin == null) && Offer.IsActive) ? ViewStates.Visible : ViewStates.Gone;
@@ -56,7 +61,62 @@ namespace Petlance
             FindViewById<RatingBar>(Resource.Id.rating).Rating = Offer.Executor.GetRating();
             Initialize(this, Offer);
             isFavorite = Petlance.User != null && Offer.IsFavorite(Petlance.User);
+            ReportButton = FindViewById<TextView>(Resource.Id.report);
+            ReportButton.Click += ReportButton_Click;
 
+        }
+        Dialog dialog;
+        private void ReportButton_Click(object sender, EventArgs e)
+        {
+            dialog = GetDialog(Resource.Layout.report_prompt, delegate
+            {
+                List<byte[]> bitmaps = new List<byte[]>();
+                foreach (var pair in ImagesDict)
+                    bitmaps.Add(pair.Value.Key);
+                new Report(-1, Offer, dialog.FindViewById<EditText>(Resource.Id.text).Text, bitmaps.ToArray()).Send();
+            });
+            dialog.Show();
+            dialog.FindViewById<TextView>(Resource.Id.add_photo).Click += AddPhotoButton_Click;
+            Photos = dialog.FindViewById<LinearLayout>(Resource.Id.photos_create);
+        }
+        protected async void AddPhotoButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var results = await FilePicker.PickMultipleAsync(PickOptions.Images);
+                foreach (var result in results)
+                    if (result != null)
+                    {
+                        using var stream = await result.OpenReadAsync();
+                        using MemoryStream memoryStream = new MemoryStream();
+                        stream.CopyTo(memoryStream);
+                        AddImage(memoryStream.ToArray());
+                    }
+
+            }
+            catch { }
+        }
+
+        protected void AddImage(byte[] bitmap)
+        {
+            CoordinatorLayout layout = new CoordinatorLayout(this) { LayoutParameters = new LayoutParams(90 * vmin, 90 * vmin) };
+            ImageView image = new ImageView(this) { LayoutParameters = new LayoutParams(90 * vmin, 90 * vmin) };
+            image.SetImageBitmap(Images.GetBitmapFromBytes(bitmap));
+            ImageView button = new ImageView(this) { LayoutParameters = new LayoutParams(10 * vmin, 10 * vmin) };
+            button.SetImageResource(Resource.Drawable.ic_mtrl_chip_close_circle);
+            button.SetBackgroundResource(Resource.Drawable.external_login_button_backgroud);
+            button.Click += DeleteImageButton_Click;
+            ImagesDict.Add(button, new KeyValuePair<byte[], CoordinatorLayout>(bitmap, layout));
+            layout.AddView(image);
+            layout.AddView(button);
+            Photos.AddView(layout);
+        }
+
+        private void DeleteImageButton_Click(object sender, EventArgs e)
+        {
+            var pair = ImagesDict[sender as ImageView];
+            Photos.RemoveView(pair.Value);
+            ImagesDict.Remove(sender as ImageView);
         }
 
         private void CheckBox_Click(object sender, EventArgs e)

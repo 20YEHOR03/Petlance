@@ -1,15 +1,4 @@
-﻿using Android.App;
-using Android.Content;
-using Android.Graphics;
-using Android.OS;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using Command = MySqlConnector.MySqlCommand;
+﻿using Command = MySqlConnector.MySqlCommand;
 using Reader = MySqlConnector.MySqlDataReader;
 using SqlType = MySqlConnector.MySqlDbType;
 
@@ -17,36 +6,34 @@ namespace Petlance
 {
     public class Report
     {
-        public Report(Offer offer, string reason, string type, Bitmap[] photos)
+        public Report(int id, Offer offer, string reason, byte[][] photos)
         {
+            Id = id;
             Offer = offer;
             Reason = reason;
-            Type = type;
             Photos = photos;
         }
         public int Id { get; set; }
         public Offer Offer { get; set; }
         public string Reason { get; set; }
-        public string Type { get; set; }
-        public Bitmap[] Photos { get; set; }
-        public bool Send()
+        public byte[][] Photos { get; set; }
+        public void Send()
         {
             using Database database = new Database();
-            Command command = database.Command("INSERT INTO `report`(`offer`, `reason`, `type`) VALUES (@offer, @reason, @type)");
+            Command command = database.Command("BEGIN; INSERT INTO `report`(`offer`, `reason`) VALUES (@offer, @reason); SELECT LAST_INSERT_ID(); COMMIT;");
             command.Parameters.Add("@offer", SqlType.Int32).Value = Offer.Id;
             command.Parameters.Add("@reason", SqlType.String).Value = Reason;
-            command.Parameters.Add("@type", SqlType.String).Value = Type;
-            if(command.ExecuteNonQuery() > 0)
+            using (Reader reader = command.ExecuteReader())
+                if (reader.Read())
+                    Id = reader.GetInt32(0);
+            command = database.Command("INSERT INTO `report_photo`(`report`, `photo`) VALUES (@report, @photo)");
+            foreach (var photo in Photos)
             {
-                foreach (var photo in Photos)
-                {
-                    command = database.Command("INSERT INTO `report_photo`(`report`, `photo`) VALUES (@report, @photo)");
-                    command.Parameters.Add("@report", SqlType.Int32).Value = Id;
-                    command.Parameters.Add("@photo", SqlType.String).Value = Images.GetBytesFromBitmap(photo);
-                }
-                return true;
+                command.Parameters.Add("@report", SqlType.Int32).Value = Id;
+                command.Parameters.Add("@photo", SqlType.String).Value = photo;
+                command.ExecuteNonQuery();
+                command.Parameters.Clear();
             }
-            return false;
         }
     }
 }

@@ -122,20 +122,20 @@ public final class R {
 		public static final int notification_background = 0x7f0800ce;
 		public static final int notification_main_column = 0x7f0800cf;
 		public static final int notification_main_column_container = 0x7f0800d0;
-		public static final int right_icon = 0x7f080101;
-		public static final int right_side = 0x7f080102;
-		public static final int tag_accessibility_actions = 0x7f080132;
-		public static final int tag_accessibility_clickable_spans = 0x7f080133;
-		public static final int tag_accessibility_heading = 0x7f080134;
-		public static final int tag_accessibility_pane_title = 0x7f080135;
-		public static final int tag_screen_reader_focusable = 0x7f080136;
-		public static final int tag_transition_group = 0x7f080137;
-		public static final int tag_unhandled_key_event_manager = 0x7f080138;
-		public static final int tag_unhandled_key_listeners = 0x7f080139;
-		public static final int text = 0x7f08013c;
-		public static final int text2 = 0x7f08013d;
-		public static final int time = 0x7f080145;
-		public static final int title = 0x7f080146;
+		public static final int right_icon = 0x7f080102;
+		public static final int right_side = 0x7f080103;
+		public static final int tag_accessibility_actions = 0x7f080133;
+		public static final int tag_accessibility_clickable_spans = 0x7f080134;
+		public static final int tag_accessibility_heading = 0x7f080135;
+		public static final int tag_accessibility_pane_title = 0x7f080136;
+		public static final int tag_screen_reader_focusable = 0x7f080137;
+		public static final int tag_transition_group = 0x7f080138;
+		public static final int tag_unhandled_key_event_manager = 0x7f080139;
+		public static final int tag_unhandled_key_listeners = 0x7f08013a;
+		public static final int text = 0x7f08013d;
+		public static final int text2 = 0x7f08013e;
+		public static final int time = 0x7f080146;
+		public static final int title = 0x7f080147;
 	}
 	public static final class integer {
 		public static final int status_bar_notification_info_maxnum = 0x7f09000e;

@@ -61,6 +61,7 @@ EditText;obj\Debug\110\res\layout\order.xml
 EditText;obj\Debug\110\res\layout\payment.xml
 EditText;obj\Debug\110\res\layout\price_prompt.xml
 EditText;obj\Debug\110\res\layout\report.xml
+EditText;obj\Debug\110\res\layout\report_prompt.xml
 EditText;obj\Debug\110\res\layout\review.xml
 external-cache-path;E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
 external-path;E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\lp\38\jl\res\xml\xamarin_essentials_fileprovider_file_paths.xml
@@ -72,6 +73,7 @@ HorizontalScrollView;obj\Debug\110\res\layout\activity_order.xml
 HorizontalScrollView;obj\Debug\110\res\layout\content_create_page4.xml
 HorizontalScrollView;obj\Debug\110\res\layout\offer_layout.xml
 HorizontalScrollView;obj\Debug\110\res\layout\report.xml
+HorizontalScrollView;obj\Debug\110\res\layout\report_prompt.xml
 ImageView;obj\Debug\110\res\layout\activity_login.xml
 ImageView;obj\Debug\110\res\layout\activity_order.xml
 ImageView;obj\Debug\110\res\layout\choose_pets_layout.xml
@@ -98,6 +100,7 @@ include;obj\Debug\110\res\layout\content_create.xml
 include;obj\Debug\110\res\layout\content_create_page1.xml
 include;obj\Debug\110\res\layout\content_offer.xml
 include;obj\Debug\110\res\layout\order.xml
+include;obj\Debug\110\res\layout\report_prompt.xml
 item;obj\Debug\110\res\drawable\enter_button.xml
 item;obj\Debug\110\res\drawable\round_empty.xml
 item;obj\Debug\110\res\drawable\round_fill.xml
@@ -148,6 +151,7 @@ LinearLayout;obj\Debug\110\res\layout\order.xml
 LinearLayout;obj\Debug\110\res\layout\payment.xml
 LinearLayout;obj\Debug\110\res\layout\price_prompt.xml
 LinearLayout;obj\Debug\110\res\layout\report.xml
+LinearLayout;obj\Debug\110\res\layout\report_prompt.xml
 LinearLayout;obj\Debug\110\res\layout\review.xml
 menu;obj\Debug\110\res\menu\edit.xml
 menu;obj\Debug\110\res\menu\favorite.xml
@@ -216,4 +220,5 @@ TextView;obj\Debug\110\res\layout\order.xml
 TextView;obj\Debug\110\res\layout\payment.xml
 TextView;obj\Debug\110\res\layout\price_prompt.xml
 TextView;obj\Debug\110\res\layout\report.xml
+TextView;obj\Debug\110\res\layout\report_prompt.xml
 TextView;obj\Debug\110\res\layout\review.xml

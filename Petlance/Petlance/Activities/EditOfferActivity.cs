@@ -119,7 +119,7 @@ namespace Petlance
             }
         }
 
-        private async void AddPhotoButton_Click(object sender, EventArgs e)
+        protected async void AddPhotoButton_Click(object sender, EventArgs e)
         {
             try
             {
@@ -137,7 +137,7 @@ namespace Petlance
             catch { }
         }
 
-        private void AddImage(byte[] bitmap)
+        protected void AddImage(byte[] bitmap)
         {
             CoordinatorLayout layout = new CoordinatorLayout(this) { LayoutParameters = new LayoutParams(90 * vmin, 90 * vmin) };
             ImageView image = new ImageView(this) { LayoutParameters = new LayoutParams(90 * vmin, 90 * vmin) };
