@@ -1,336 +1,326 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Petlance.Admin" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="13.25" Y="5.25" Width="1.5" />
+  <Class Name="Petlance.Admin" BaseTypeListCollapsed="true">
+    <Position X="35.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAQAAAAEAA=</HashCode>
       <FileName>Account\Admin.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Petlance.Executor" Collapsed="true">
-    <Position X="0.5" Y="7.75" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAAAAFEAAAAQAAAAAAAAAAAAAAAAAAADAAAAAAAAIAA=</HashCode>
-      <FileName>Account\Executor.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Petlance.User" Collapsed="true">
-    <Position X="0.5" Y="6.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQCgAAIACQAAAAAAAAAAAQAAAERAAgCIAAYIBAAAAA=</HashCode>
-      <FileName>Account\User.cs</FileName>
-    </TypeIdentifier>
-    <Lollipop Position="0.2" />
-  </Class>
-  <Class Name="Petlance.DrawerActivity" Collapsed="true">
-    <Position X="19" Y="2" Width="1.5" />
+  <Class Name="Petlance.DrawerActivity">
+    <Position X="19" Y="5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>CAAAAAAAAAgAEAgAAAAAIAgAgCAAgBAAAAAAAgAAAAA=</HashCode>
       <FileName>Activities\Abstract\DrawerActivity.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="Petlance.FilterActivity" Collapsed="true">
-    <Position X="26.75" Y="3.5" Width="1.5" />
+  <Class Name="Petlance.FilterActivity">
+    <Position X="24.75" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAgAAAAAAAAAAAAAAAACAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Activities\Abstract\FilterActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.OfferListActivity" Collapsed="true">
-    <Position X="26.75" Y="4.75" Width="1.5" />
+  <Class Name="Petlance.OfferListActivity">
+    <Position X="24.75" Y="12" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAACQAACAAAAAIAAAgAASAgDAAAAAEQAAACAAAAAA=</HashCode>
       <FileName>Activities\Abstract\OfferListActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.PetlanceActivity" Collapsed="true">
+  <Class Name="Petlance.PetlanceActivity">
     <Position X="19" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAAAAAAIAAAAAACACAAAEAAAAEAAAAIAAA=</HashCode>
+      <HashCode>AAACAAAAAAAAAAAAIAAAAAACACAAAEAAAAEAAAAMAAA=</HashCode>
       <FileName>Activities\Abstract\PetlanceActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.ReviewListActivity" Collapsed="true">
-    <Position X="7.75" Y="3.5" Width="1.5" />
+  <Class Name="Petlance.ReviewListActivity">
+    <Position X="7.75" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAQAAAAQAAAAAAAAAACChCAAAAAAQAAACAAAAAA=</HashCode>
       <FileName>Activities\Abstract\ReviewListAvtivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.CommentsActivity" Collapsed="true">
-    <Position X="6.5" Y="4.75" Width="1.5" />
+  <Class Name="Petlance.CommentsActivity">
+    <Position X="6.5" Y="14" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Activities\CommentsActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.DocumentsActivity" Collapsed="true">
-    <Position X="15.5" Y="3.5" Width="1.5" />
+  <Class Name="Petlance.DocumentsActivity">
+    <Position X="15.5" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAQAACAAAAAIAAAAAAQAgCAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Activities\DocumentsActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.EditOfferActivity" Collapsed="true">
-    <Position X="20" Y="3.5" Width="1.5" />
+  <Class Name="Petlance.EditOfferActivity">
+    <Position X="20" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BIABAAAABEAQCKjAAAAQBAAgACAQABAABAAAAgACIAA=</HashCode>
+      <HashCode>BIABAAAABEAQCKrAAAAQBAAgACAQAAAABAAAAgACIAA=</HashCode>
       <FileName>Activities\EditOfferActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.FavoritesActivity" Collapsed="true">
-    <Position X="29" Y="6.25" Width="1.5" />
+  <Class Name="Petlance.FavoritesActivity">
+    <Position X="27" Y="16.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Activities\FavoritesActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.HelpActivity" Collapsed="true">
-    <Position X="35.75" Y="2" Width="1.5" />
+  <Class Name="Petlance.HelpActivity">
+    <Position X="24" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Activities\HelpActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.LoginActivity" Collapsed="true">
-    <Position X="2" Y="2" Width="1.5" />
+  <Class Name="Petlance.LoginActivity">
+    <Position X="15.5" Y="5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAhAAAAAAgAAAAAAEEoAAiAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAhAAAAAAgAAAAAAEEoAAiAAgAAAAAAAAAAAAAA=</HashCode>
       <FileName>Activities\LoginActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.MainActivity" Collapsed="true">
-    <Position X="24.5" Y="6.25" Width="1.5" />
+  <Class Name="Petlance.MainActivity">
+    <Position X="22.5" Y="16.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Activities\MainActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.MyOffersActivity" Collapsed="true">
-    <Position X="26.75" Y="6.25" Width="1.5" />
+  <Class Name="Petlance.MyOffersActivity">
+    <Position X="24.75" Y="16.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Activities\MyOffersActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.OfferActivity" Collapsed="true">
-    <Position X="8.75" Y="4.75" Width="1.5" />
+  <Class Name="Petlance.OfferActivity">
+    <Position X="8.75" Y="14" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AQAAAAABAAIQCQAAAAAQAACgwCCAgEEFAAAAAAAAACI=</HashCode>
+      <HashCode>AQAAAAABAAIQCSKAAAAQAACkwCCQgEAFAAAAAAACACI=</HashCode>
       <FileName>Activities\OfferActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.OrderActivity" Collapsed="true">
-    <Position X="22.25" Y="3.5" Width="1.5" />
+  <Class Name="Petlance.OrderActivity">
+    <Position X="22.25" Y="9.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AIkAAACAAAAECggAgAAQQIBAACAIAAAAAQCABAMICAA=</HashCode>
+      <HashCode>AIkAAACAAAAECggAgAAQAIBAACAIAAAAAQCABAMICAA=</HashCode>
       <FileName>Activities\OrderActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.RegisterActivity" Collapsed="true">
-    <Position X="33.5" Y="2" Width="1.5" />
+  <Class Name="Petlance.RegisterActivity">
+    <Position X="21.75" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAABAAAIAAAAAAAEAAAAgACAQgAAAAAAAAAAAAAA=</HashCode>
       <FileName>Activities\RegisterActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.ReportsActivity" Collapsed="true">
-    <Position X="31.25" Y="3.5" Width="1.5" />
+  <Class Name="Petlance.ReportsActivity">
+    <Position X="27.25" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAIAQAAAAAAAAAgAAAAAAAgCAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Activities\ReportsActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.SettingsActivity" Collapsed="true">
-    <Position X="4.25" Y="2" Width="1.5" />
+  <Class Name="Petlance.SettingsActivity">
+    <Position X="17.25" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Activities\SettingsActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.UserActivity" Collapsed="true">
-    <Position X="11" Y="3.5" Width="1.5" />
+  <Class Name="Petlance.UserActivity">
+    <Position X="11" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EgAAIABAAAAARQAAAAwCAQSAACAAgMAACFAAAAEAiAA=</HashCode>
       <FileName>Activities\UserActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.UserOrdersActivity" Collapsed="true">
-    <Position X="13.25" Y="3.5" Width="1.5" />
+  <Class Name="Petlance.UserOrdersActivity">
+    <Position X="13.25" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAEAAAAACQAAQAIAAAAAAQCgCIgAAABAAAAAAAAAAA=</HashCode>
       <FileName>Activities\UserOrdersActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.VerifyActivity" Collapsed="true">
-    <Position X="17.75" Y="3.5" Width="1.5" />
+  <Class Name="Petlance.VerifyActivity">
+    <Position X="17.75" Y="9.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAQAAAAEAAAAgAACAAAAACAAAAAAAgACA=</HashCode>
       <FileName>Activities\VerifyActivity.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.Animal" Collapsed="true">
-    <Position X="15" Y="5.25" Width="1.5" />
+  <Class Name="Petlance.Animal">
+    <Position X="38.75" Y="4" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAgAAAAAAAAAAAAAAAAQAAQAAAAAA=</HashCode>
       <FileName>Entities\Animal.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.Discount" Collapsed="true">
-    <Position X="18.5" Y="5.25" Width="1.5" />
+  <Class Name="Petlance.Discount">
+    <Position X="37" Y="5.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQQAAAAAAIAAAEAAAAAAAAAAAAAgAAgAAAA=</HashCode>
       <FileName>Entities\Discount.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.Offer" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="11.5" Y="7.25" Width="1.5" />
+  <Class Name="Petlance.Offer">
+    <Position X="40.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>JAQCAgCABAggAGQAEAAQAAAAAAEAAAhAAAAIAAAAAAA=</HashCode>
       <FileName>Entities\Offer.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Petlance.Order" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="13.25" Y="7.25" Width="1.5" />
+  <Class Name="Petlance.Order">
+    <Position X="37" Y="0.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>BAQDAAEAARAQAAAAAEAQAAAAAAEAAQgAAAAIQAAAAQA=</HashCode>
+      <HashCode>BAQDAAEAAQAQAAAAAEAQAAAAAAEAAQgAQAAIQAAAAQA=</HashCode>
       <FileName>Entities\Order.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Petlance.Report" Collapsed="true">
-    <Position X="11.5" Y="8.25" Width="1.5" />
+  <Class Name="Petlance.Report">
+    <Position X="33.25" Y="0.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAACAAAAAAAQACIAAEAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <HashCode>AAACAAAAAAAQACIAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Entities\Report.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.NoRequest" Collapsed="true">
-    <Position X="18.5" Y="6.25" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>BAADAAAAAAAQAAAAAAAQAAAAAAEAAAAAAAAAQAAAAQA=</HashCode>
-      <FileName>Entities\Request.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Petlance.Review" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="13.25" Y="8.25" Width="1.5" />
+  <Class Name="Petlance.Review">
+    <Position X="42.25" Y="2.25" Width="2" />
     <TypeIdentifier>
       <HashCode>QAQDAAAAEAAgAAQAAAAQAAAAAAEAAAgBAAAIAAAAAAA=</HashCode>
       <FileName>Entities\Review.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Petlance.Database" Collapsed="true" BaseTypeListCollapsed="true">
-    <Position X="16.75" Y="5.25" Width="1.5" />
+  <Class Name="Petlance.Database" BaseTypeListCollapsed="true">
+    <Position X="28.25" Y="4.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAgAACAAIAEAAAAABAAAAAEACAAAABAAAACAAAA=</HashCode>
       <FileName>Utils\Database.cs</FileName>
     </TypeIdentifier>
     <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Petlance.EmailService" Collapsed="true">
-    <Position X="13.25" Y="6.25" Width="1.5" />
+  <Class Name="Petlance.EmailService">
+    <Position X="38.75" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAoAEAgAAAAAgAQAAACAAAAAgAAAAA=</HashCode>
       <FileName>Utils\EmailService.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.Images" Collapsed="true">
-    <Position X="15" Y="6.25" Width="1.5" />
+  <Class Name="Petlance.Images">
+    <Position X="31" Y="1.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
       <FileName>Utils\Images.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.Petlance" Collapsed="true">
-    <Position X="16.75" Y="7.25" Width="1.5" />
+  <Class Name="Petlance.Petlance">
+    <Position X="33.25" Y="3.5" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAABAAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <HashCode>AAABAAAAAAAAAAAAAgAAAQAAAAAAAAAAAAAAAAAAAEA=</HashCode>
       <FileName>Utils\Petlance.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Petlance.PetlanceSupportActionBarDrawerToggle" Collapsed="true">
-    <Position X="18.5" Y="7.25" Width="1.5" />
+    <Position X="31" Y="5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAAAAAgAAQAAABAAAAAAAAAAAAgIAAAAAAAAAAA=</HashCode>
       <FileName>Utils\PetlanceSupportActionBArDrawerToggle.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="Petlance.SecurePasswordHasher" Collapsed="true">
-    <Position X="15" Y="8.25" Width="1.5" />
+  <Class Name="Petlance.SecurePasswordHasher">
+    <Position X="33.25" Y="5.75" Width="2.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAIAAQAAgAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
       <FileName>Utils\SecurePasswordHasher.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Petlance.AdaptiveLayout" Collapsed="true">
-    <Position X="11.5" Y="5.25" Width="1.5" />
+    <Position X="31" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAIBAIACAAAAAAAAA=</HashCode>
       <FileName>Veiws\AdaptiveLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Petlance.DocumentLayout" Collapsed="true">
-    <Position X="11.5" Y="6.25" Width="1.5" />
+    <Position X="31" Y="2.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAABBAAAABAEAQAAAIAAAAEAAAAAACACECgAAAAICAA=</HashCode>
-      <FileName>Veiws\DocumnetLayout.cs</FileName>
+      <FileName>Veiws\DocumentLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Petlance.EntityLayout" Collapsed="true">
-    <Position X="1.75" Y="3.5" Width="1.5" />
+    <Position X="1.75" Y="6.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAQCAAEAAAAAE=</HashCode>
       <FileName>Veiws\EntityLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Petlance.LinkTextView" Collapsed="true">
-    <Position X="16.75" Y="6.25" Width="1.5" />
+    <Position X="31" Y="4.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Veiws\LinkTextView.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Petlance.OfferLayout" Collapsed="true">
-    <Position X="0.5" Y="5" Width="1.5" />
+    <Position X="0.5" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>BAAAAAIAQEAAAwAAEAAAAgAEBIAAECAAAEAAAACAAAA=</HashCode>
       <FileName>Veiws\OfferLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
+  <Class Name="Petlance.ReasonButton" Collapsed="true">
+    <Position X="29" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAQAAgAAAAAAAAABAA=</HashCode>
+      <FileName>Veiws\ReasonButton.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="Petlance.OrderLayout" Collapsed="true">
-    <Position X="15" Y="7.25" Width="1.5" />
+    <Position X="31" Y="3.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAEAAAAAAAAAAQAAAgAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
       <FileName>Veiws\RequestLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Petlance.ReviewLayout" Collapsed="true">
-    <Position X="2.75" Y="5" Width="1.5" />
+    <Position X="2.75" Y="8" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAQEAAAQAAAAAAAgAEBIAAEAAAAAAAAACAgAA=</HashCode>
       <FileName>Veiws\ReviewLayout.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Interface Name="Petlance.IAccount" Collapsed="true">
-    <Position X="13.25" Y="9.5" Width="1.5" />
+  <Class Name="Petlance.Executor">
+    <Position X="47.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAFEAAAAQAAAAAAAAAAAAAAAAAAADAAAAAAAAIAA=</HashCode>
+      <FileName>Account\Executor.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Petlance.User">
+    <Position X="44.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQCgAAIACQABAAAAAAAAAQAAAERAAgCIAAYIBAAAAA=</HashCode>
+      <FileName>Account\User.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Interface Name="Petlance.IAccount">
+    <Position X="35.25" Y="3" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAgAAAACAAAACIAAAAA=</HashCode>
       <FileName>Account\Account.cs</FileName>
     </TypeIdentifier>
   </Interface>
-  <Interface Name="Petlance.Entity" Collapsed="true">
-    <Position X="11.5" Y="9.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AAQCAAAAAAAAAAAAAAAAAAAAAAEAAAgAAAAIAAAAAAA=</HashCode>
-      <FileName>Entities\Entity.cs</FileName>
-    </TypeIdentifier>
-  </Interface>
-  <Enum Name="Petlance.OrderType" Collapsed="true">
-    <Position X="11.5" Y="10.5" Width="1.5" />
+  <Enum Name="Petlance.OrderType">
+    <Position X="42.25" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAEAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Utils\Petlance.cs</FileName>
