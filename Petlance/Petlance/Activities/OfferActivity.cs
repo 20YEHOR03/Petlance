@@ -56,7 +56,6 @@ namespace Petlance
             try { FindViewById<ImageView>(Resource.Id.picture).SetImageBitmap(Images.GetBitmapFromBytes(Offer.Executor.Picture)); }
             catch { FindViewById<ImageView>(Resource.Id.picture).SetImageResource(Resource.Drawable.no_image); }
             FindViewById<TextView>(Resource.Id.title).Text = Offer.Executor.Name;
-            FindViewById<TextView>(Resource.Id.desc).Text = Offer.Description;
             FindViewById<TextView>(Resource.Id.date).Text = "using service since\n" + Offer.Executor.Date.ToString("MMMM yyyy");
             FindViewById<RatingBar>(Resource.Id.rating).Rating = Offer.Executor.GetRating();
             Initialize(this, Offer);
@@ -181,6 +180,7 @@ namespace Petlance
                            bottom: BottomPadding);
                     photos.AddView(imageView);
                 }
+            activity.FindViewById<TextView>(Resource.Id.desc).Text = offer.Description;
         }
         private void OtherCheckBox_Click(object sender, EventArgs e) => OtherEditText.Visibility = OtherCheckBox.Checked ? ViewStates.Visible : ViewStates.Gone;
 
