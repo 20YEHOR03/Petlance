@@ -11,7 +11,7 @@ namespace Petlance
         {
             Server = "petlance.mysql.database.azure.com",
             Database = "petlance",
-            UserID = "petlance",
+            UserID = "application",
             Port = 3306,
             Password = "8UQV4geB5Qyk*aIZ"
         };

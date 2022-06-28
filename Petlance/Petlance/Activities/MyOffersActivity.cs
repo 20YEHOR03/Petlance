@@ -2,13 +2,7 @@
 using Android.Content.PM;
 using Android.OS;
 using Android.Views;
-using Android.Widget;
 using Google.Android.Material.FloatingActionButton;
-using System;
-using System.Collections.Generic;
-using Command = MySqlConnector.MySqlCommand;
-using Reader = MySqlConnector.MySqlDataReader;
-using SqlType = MySqlConnector.MySqlDbType;
 
 namespace Petlance
 {
@@ -19,8 +13,8 @@ namespace Petlance
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Activity_layout = Resource.Layout.activity_list_offer;
-            WHEREclause = $"`offer`.`id`=`animal`.`offer` AND `is_active`=1 AND `offer`.`executor`={Petlance.User.Id} ";
-            FROMclause = "`offer`, `animal` ";
+            WHEREclause = $" `is_active`=1 AND `offer`.`executor`={Petlance.User.Id} ";
+            FROMclause = " `offer` LEFT JOIN `animal` ON `offer`.`id`=`animal`.`offer` ";
             base.OnCreate(savedInstanceState);
             FloatingActionButton = FindViewById<FloatingActionButton>(Resource.Id.fab_add);
             FloatingActionButton.Click += FabOnClick;

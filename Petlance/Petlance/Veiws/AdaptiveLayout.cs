@@ -8,7 +8,7 @@ namespace Petlance
 {
     public static class AdaptiveLayout
     {
-        private static DisplayMetrics displayMetrics = Application.Context.Resources.DisplayMetrics;
+        private static readonly DisplayMetrics displayMetrics = Application.Context.Resources.DisplayMetrics;
         public static int vw = displayMetrics.WidthPixels / 100;
         public static int vh = displayMetrics.HeightPixels / 100;
         public static int vmin = Math.Min(vw, vh);

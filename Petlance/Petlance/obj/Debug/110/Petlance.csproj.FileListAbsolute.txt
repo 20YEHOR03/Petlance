@@ -519,7 +519,6 @@ E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\drawable\map.png
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\activity_help.xml
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\activity_settings.xml
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\activity_create.xml
-E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\activity_take.xml
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\filters.xml
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\menu\favorite.xml
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\toolbar_empty.xml
@@ -882,3 +881,5 @@ E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\payment.xml
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\report.xml
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\report_prompt.xml
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\android\src\crc64fc3325efa7b239bc\ReasonButton.java
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\email_prompt.xml
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\new_password_prompt.xml

@@ -21,20 +21,25 @@ namespace Petlance
     {
         protected DrawerLayout drawerLayout;
         protected NavigationView navigationView;
+        protected DrawerActivity activity;
         public View NavHeader { get; set; }
 
-        public PetlanceSupportActionBarDrawerToggle(Activity activity, DrawerLayout drawerLayout, int openDrawerContentDescRes, int closeDrawerContentDescRes) : base(activity, drawerLayout, openDrawerContentDescRes, closeDrawerContentDescRes) => Initialize(drawerLayout);
+        public PetlanceSupportActionBarDrawerToggle(DrawerActivity activity, DrawerLayout drawerLayout, int openDrawerContentDescRes, int closeDrawerContentDescRes) : base(activity, drawerLayout, openDrawerContentDescRes, closeDrawerContentDescRes) => Initialize(drawerLayout, activity);
 
-        public PetlanceSupportActionBarDrawerToggle(Activity activity, DrawerLayout drawerLayout, AndroidX.AppCompat.Widget.Toolbar toolbar, int openDrawerContentDescRes, int closeDrawerContentDescRes) : base(activity, drawerLayout, toolbar, openDrawerContentDescRes, closeDrawerContentDescRes) => Initialize(drawerLayout);
+        public PetlanceSupportActionBarDrawerToggle(DrawerActivity activity, DrawerLayout drawerLayout, AndroidX.AppCompat.Widget.Toolbar toolbar, int openDrawerContentDescRes, int closeDrawerContentDescRes) : base(activity, drawerLayout, toolbar, openDrawerContentDescRes, closeDrawerContentDescRes) => Initialize(drawerLayout, activity);
 
         protected PetlanceSupportActionBarDrawerToggle(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer) { }
-        private void Initialize(DrawerLayout drawerLayout)
+        private void Initialize(DrawerLayout drawerLayout, DrawerActivity activity)
         {
+            this.activity = activity;
+            this.drawerLayout = drawerLayout;
             navigationView = drawerLayout.FindViewById<NavigationView>(Resource.Id.navigationView);
             NavHeader = navigationView.GetHeaderView(0);
         }
         public override void OnDrawerOpened(View drawerView)
         {
+            if(drawerView != activity.Menu && activity.Menu != null)
+                drawerLayout.CloseDrawer(activity.Menu);
             UpdateHeader();
             base.OnDrawerOpened(drawerView);
         }

@@ -24,7 +24,8 @@ namespace Petlance
             + "SELECT LAST_INSERT_ID();"
             + "COMMIT;";
 
-        public Offer(string title,
+        public Offer(int id,
+                     string title,
                      string shortDescription,
                      string description,
                      int initialPrice,
@@ -45,6 +46,7 @@ namespace Petlance
             Entopped = entopped;
             Animals = animals;
             Photos = photos;
+            Id = id;
         }
 
         public Offer() { }
@@ -59,7 +61,7 @@ namespace Petlance
         public bool Entopped { get; set; } = false;
         public Animal[] Animals { get; set; }
         public byte[][] Photos { get; set; }
-        public static Offer GetOfferById(int id)
+        public static Offer GetOfferById(int id, Executor executor = null)
         {
             Offer offer = null;
             using Database database = new Database();
@@ -67,21 +69,28 @@ namespace Petlance
             command.Parameters.Add("@id", SqlType.Int32).Value = id;
             using (Reader reader = command.ExecuteReader())
                 if (reader.Read())
-                    offer = new Offer(
-                            title: reader.GetString(reader.GetOrdinal("title")),
-                            shortDescription: reader.GetString(reader.GetOrdinal("short_desc")),
-                            description: reader.GetString(reader.GetOrdinal("description")),
-                            initialPrice: reader.GetInt32(reader.GetOrdinal("initial_price")),
-                            contacts: reader.GetString(reader.GetOrdinal("contacts")),
-                            isActive: reader.GetBoolean(reader.GetOrdinal("is_active")),
-                            executor: Executor.GetExecutorById(reader.GetInt32(reader.GetOrdinal("executor"))),
-                            entopped: reader.GetBoolean(reader.GetOrdinal("entopped")),
-                            animals: null,
-                            photos: null)
-                    { Id = id };
+                    offer = new Offer(id: id,
+                                      title: reader.GetString(reader.GetOrdinal("title")),
+                                      shortDescription: reader.GetString(reader.GetOrdinal("short_desc")),
+                                      description: reader.GetString(reader.GetOrdinal("description")),
+                                      initialPrice: reader.GetInt32(reader.GetOrdinal("initial_price")),
+                                      contacts: reader.GetString(reader.GetOrdinal("contacts")),
+                                      isActive: reader.GetBoolean(reader.GetOrdinal("is_active")),
+                                      executor: executor ?? Executor.GetExecutorById(reader.GetInt32(reader.GetOrdinal("executor"))),
+                                      entopped: reader.GetBoolean(reader.GetOrdinal("entopped")),
+                                      animals: null,
+                                      photos: null);
 
+            FillArrays(id, offer);
+
+            return offer;
+        }
+
+        private static void FillArrays(int id, Offer offer)
+        {
+            using Database database = new Database();
             List<Animal> animals = new List<Animal>();
-            command = database.Command("SELECT * FROM `animal` WHERE `offer`=@offer");
+            Command command = database.Command("SELECT * FROM `animal` WHERE `offer`=@offer");
             command.Parameters.Add("@offer", SqlType.Int32).Value = id;
             using (Reader reader = command.ExecuteReader())
                 while (reader.Read())
@@ -89,7 +98,6 @@ namespace Petlance
                         type: reader.GetInt32(reader.GetOrdinal("type")),
                         price: reader.GetInt32(reader.GetOrdinal("price"))));
             offer.Animals = animals.ToArray();
-
             List<byte[]> photos = new List<byte[]>();
             command = database.Command("SELECT `photo` FROM `offer_photo` WHERE `offer`=@offer");
             command.Parameters.Add("@offer", SqlType.Int32).Value = id;
@@ -97,9 +105,8 @@ namespace Petlance
                 while (reader.Read())
                     photos.Add((byte[])reader[0]);
             offer.Photos = photos.ToArray();
-
-            return offer;
         }
+
         public void Update()
         {
             using Database database = new Database();

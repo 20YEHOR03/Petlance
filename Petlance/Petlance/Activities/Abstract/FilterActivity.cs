@@ -23,7 +23,7 @@ namespace Petlance
             base.OnCreate(savedInstanceState);
             filters = FindViewById<LinearLayout>(Resource.Id.filters);
             filtersButton = FindViewById<TextView>(Resource.Id.apply_filters);
-            menu = filters;
+            Menu = filters;
         }
     }
 }

@@ -23,6 +23,7 @@ namespace Petlance
         protected FloatingActionButton FloatingActionButton { get; set; }
         public string FROMclause { get; set; }
         public string WHEREclause { get; set; }
+        Dictionary<int, Executor> executors = new Dictionary<int, Executor>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -66,46 +67,49 @@ namespace Petlance
         }
         protected void MoreButton_Click(object sender, EventArgs e)
         {
-            bool hasRows = false;
             int prev = current;
-            List<Offer> offers = new List<Offer>();
-            using Database database = new Database();
-            Command command = database.Command(
-                "SELECT `offer`.`id`, `offer`.`title`, `offer`.`short_desc`, `offer`.`executor`, `offer`.`is_active`, "
-                + "GROUP_CONCAT(`animal`.`type`, '') as pts, "
-                + "(SUM(`animal`.`price`) + `offer`.`initial_price`) AS price "
-                + $"FROM {FROMclause} "
-                + $"WHERE {WHEREclause} "
-                + $"GROUP BY `offer`.`id` "
-                + $"{HavingClause()} "
-                + "ORDER BY `entopped` DESC "
-                + $"LIMIT {current}, {Count} ");
-            using (Reader reader = command.ExecuteReader())
+            Dictionary<Offer, int> offers = new Dictionary<Offer, int>();
+            using (Database database = new Database())
             {
-                hasRows = reader.HasRows;
+                Command command = database.Command(
+                    "SELECT `offer`.`id`, `offer`.`title`, `offer`.`short_desc`, `offer`.`executor`, `offer`.`is_active`, "
+                    + "GROUP_CONCAT(`animal`.`type`, '') as pts, "
+                    + "(SUM(`animal`.`price`) + `offer`.`initial_price`) AS price "
+                    + $"FROM {FROMclause} "
+                    + $"WHERE {WHEREclause} "
+                    + $"GROUP BY `offer`.`id` "
+                    + $"{HavingClause()} "
+                    + "ORDER BY `entopped` DESC "
+                    + $"LIMIT {current}, {Count} ");
+                using Reader reader = command.ExecuteReader();
                 while (reader.Read())
                     offers.Add(new Offer()
                     {
                         Id = reader.GetInt32(0),
                         Title = reader.GetString(1),
                         ShortDescription = reader.GetString(2),
-                        Executor = Executor.GetExecutorById(reader.GetInt32(3)),
                         IsActive = reader.GetBoolean(4)
-                    });
+                    }, reader.GetInt32(3));
             }
-            foreach (Offer offer in offers)
+            foreach (var offer in offers)
             {
                 List<Animal> animals = new List<Animal>();
-                command = database.Command("SELECT * FROM `animal` WHERE `offer`=@offer");
-                command.Parameters.Add("@offer", SqlType.Int32).Value = offer.Id;
-                using (Reader reader = command.ExecuteReader())
+                using (Database database = new Database())
+                {
+                    Command command = database.Command("SELECT * FROM `animal` WHERE `offer`=@offer");
+                    command.Parameters.Add("@offer", SqlType.Int32).Value = offer.Key.Id;
+                    using Reader reader = command.ExecuteReader();
                     while (reader.Read())
                         animals.Add(new Animal(reader.GetInt32(reader.GetOrdinal("type")), 0));
-                offer.Animals = animals.ToArray();
+                }
+                offer.Key.Animals = animals.ToArray();
+                if(!executors.ContainsKey(offer.Value))
+                    executors.Add(offer.Value, Executor.GetExecutorById(offer.Value));
+                offer.Key.Executor = executors[offer.Value];
                 current++;
-                ListLayout.AddView(new OfferLayout(this, offer));
+                ListLayout.AddView(new OfferLayout(this, offer.Key));
             }
-            if (!hasRows && current == 0)
+            if (offers.Count == 0 && current == 0)
             {
                 TextView view = new TextView(this)
                 {

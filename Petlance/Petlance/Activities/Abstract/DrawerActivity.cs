@@ -15,12 +15,12 @@ namespace Petlance
     public abstract class DrawerActivity : PetlanceActivity, NavigationView.IOnNavigationItemSelectedListener
     {
         protected int menu_layout;
-        protected View menu;
 
         public View NavHeader { get; set; }
         protected DrawerLayout DrawerLayout { get; set; }
         protected NavigationView NavigationView { get; set; }
         protected PetlanceSupportActionBarDrawerToggle Toggle { get; set; }
+        public View Menu { get; set; }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
@@ -96,23 +96,19 @@ namespace Petlance
         {
             switch (item.ItemId)
             {
-                case Android.Resource.Id.Home:
-                    DrawerLayout.CloseDrawer(menu);
-                    Toggle.OnOptionsItemSelected(item);
-                    return true;
                 case Resource.Id.filter_button:
-                    if (DrawerLayout.IsDrawerOpen(menu))
-                        DrawerLayout.CloseDrawer(menu);
+                    if (DrawerLayout.IsDrawerOpen(Menu))
+                        DrawerLayout.CloseDrawer(Menu);
                     else
                     {
                         DrawerLayout.CloseDrawer(NavigationView);
-                        DrawerLayout.OpenDrawer(menu);
+                        DrawerLayout.OpenDrawer(Menu);
                     }
                     return true;
                 case Resource.Id.favorite_button:
                     return true;
                 default:
-                    return base.OnOptionsItemSelected(item);
+            return base.OnOptionsItemSelected(item);
             }
         }
     }

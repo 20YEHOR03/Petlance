@@ -51,7 +51,7 @@ namespace Petlance
             Command command = database.Command("SELECT * FROM `user`, `executor` WHERE `user`.`id`=@id AND `user`.`id`=`executor`.`user`");
             command.Parameters.Add("@id", SqlType.Int32).Value = id;
             using Reader reader = command.ExecuteReader();
-            return (reader.Read()) ? new Executor(name: reader.GetString(reader.GetOrdinal("name")),
+            return reader.Read() ? new Executor(name: reader.GetString(reader.GetOrdinal("name")),
                                                   password: reader.GetString(reader.GetOrdinal("password")),
                                                   tel: reader.GetString(reader.GetOrdinal("tel")),
                                                   email: reader.GetString(reader.GetOrdinal("email")),

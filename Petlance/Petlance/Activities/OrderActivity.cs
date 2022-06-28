@@ -185,12 +185,13 @@ namespace Petlance
             List<Animal> animals = new List<Animal>();
             foreach(var animal in Order.Animals)
                 animals.Add(animal.Key);
-            new Review(0, Petlance.User,
+            new Review(Order.Id, Petlance.User,
                 Order.Offer.Executor,
                 Review.FindViewById<EditText>(Resource.Id.text).Text,
                 Review.FindViewById<RatingBar>(Resource.Id.rating).Rating,
                 animals.ToArray(),
                 DateTime.Now).Update();
+
         }
         private async void Decline(object sender, EventArgs e)
         {

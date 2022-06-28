@@ -23,6 +23,9 @@ namespace Petlance
         protected LinearLayout TabLayout { get; set; }
         protected TextView Incomming { get; set; }
         protected TextView Outgoing { get; set; }
+        Dictionary<int, User> users = new Dictionary<int, User>();
+        Dictionary<int, Offer> offers = new Dictionary<int, Offer>();
+        Dictionary<int, Executor> executors = new Dictionary<int, Executor>();
         protected override void OnCreate(Bundle savedInstanceState)
         {
             Activity_layout = Resource.Layout.activity_list_tabbed;
@@ -62,20 +65,30 @@ namespace Petlance
         protected void MoreButton_Click2(object sender, EventArgs e)
         {
             int prev = current[1];
-            List<Order> orders = new List<Order>();
-            using Database database = new Database();
-            Command command = database.Command(
-                "SELECT `id`, `user`, `offer`, `time`, `price`, `is_paid`, `other`, `desc`, `is_accepted`, `days` "
-                + " FROM `order` "
-                + " WHERE `user`=@id "
-                + $" ORDER BY `time` DESC LIMIT {current[1]}, {Count} ");
-            command.Parameters.Add("@id", SqlType.Int32).Value = Petlance.User.Id;
-            using (Reader reader = command.ExecuteReader())
+            Dictionary<Order, KeyValuePair<int, int>> orders = new Dictionary<Order, KeyValuePair<int, int>>();
+            using (Database database = new Database())
+            {
+                Command command = database.Command(
+                    "SELECT `order`.`id`, "
+                    + "`offer`.`executor`, "
+                    + "`order`.`offer`, "
+                    + "`order`.`time`, "
+                    + "`order`.`price`, "
+                    + "`order`.`is_paid`, "
+                    + "`order`.`other`, "
+                    + "`order`.`desc`, "
+                    + "`order`.`is_accepted`, "
+                    + "`order`.`days` "
+                    + " FROM `order`, `offer` "
+                    + " WHERE `user`=@id AND `order`.`offer`=`offer`.`id` "
+                    + $" ORDER BY `time` DESC LIMIT {current[1]}, {Count} ");
+                command.Parameters.Add("@id", SqlType.Int32).Value = Petlance.User.Id;
+                using Reader reader = command.ExecuteReader();
                 while (reader.Read())
                     orders.Add(new Order(
                         id: reader.GetInt32(0),
-                        user: User.GetUserById(reader.GetInt32(1)),
-                        offer: Offer.GetOfferById(reader.GetInt32(2)),
+                        user: Petlance.User,//User.GetUserById(reader.GetInt32(1)),
+                        offer: null,//Offer.GetOfferById(reader.GetInt32(2), Petlance.User as Executor),
                         time: reader.GetDateTime(3),
                         price: reader.GetInt32(4),
                         isPaid: reader.GetBoolean(5),
@@ -83,16 +96,26 @@ namespace Petlance
                         other: reader.GetString(6),
                         desc: reader.GetString(7),
                         isAccepted: reader.GetBoolean(8),
-                        days: reader.GetInt32(9)));
-            foreach (Order order in orders)
+                        days: reader.GetInt32(9)),
+                        new KeyValuePair<int, int>(reader.GetInt32(1), reader.GetInt32(2)));
+            }
+            foreach (var order in orders)
             {
-                command = database.Command("SELECT `animal`, `count` FROM `order_animal` WHERE `order`=@order ");
-                command.Parameters.Add("@order", SqlType.Int32).Value = order.Id;
-                using (Reader reader = command.ExecuteReader())
+                using (Database database = new Database())
+                {
+                    Command command = database.Command("SELECT `animal`, `count` FROM `order_animal` WHERE `order`=@order ");
+                    command.Parameters.Add("@order", SqlType.Int32).Value = order.Key.Id;
+                    using Reader reader = command.ExecuteReader();
                     while (reader.Read())
-                        order.Animals.Add(new Animal(reader.GetInt32(0)), reader.GetInt32(1));
+                        order.Key.Animals.Add(new Animal(reader.GetInt32(0)), reader.GetInt32(1));
+                }
+                if (!executors.ContainsKey(order.Value.Key))
+                    executors.Add(order.Value.Key, Executor.GetExecutorById(order.Value.Key));
+                if (!offers.ContainsKey(order.Value.Value))
+                    offers.Add(order.Value.Value, Offer.GetOfferById(order.Value.Value, executors[order.Value.Key]));
+                order.Key.Offer = offers[order.Value.Value];
                 current[1]++;
-                ListLayout[1].AddView((View)new OrderLayout(this, order, OrderType.Outgoing));
+                ListLayout[1].AddView((View)new OrderLayout(this, order.Key, OrderType.Outgoing));
             }
             if (orders.Count == 0 && current[1] == 0)
             {
@@ -109,26 +132,27 @@ namespace Petlance
         protected void MoreButton_Click1(object sender, EventArgs e)
         {
             int prev = current[0];
-            List<Order> orders = new List<Order>();
-            using Database database = new Database();
-            Command command = database.Command(
-                "SELECT "
-                + "`order`.`id`, "
-                + "`order`.`user`, "
-                + "`order`.`offer`, "
-                + "`order`.`time`, "
-                + "`order`.`other`, "
-                + "`order`.`desc`, "
-                + "`order`.`days` "
-                + " FROM `order`, `offer` "
-                + "WHERE `order`.`offer`=`offer`.`id` AND `offer`.`executor`=@id AND `order`.`is_accepted`=0"
-                + $" ORDER BY `order`.`time` DESC LIMIT {current[0]}, {Count} ");
-            command.Parameters.Add("@id", SqlType.Int32).Value = Petlance.User.Id;
-            using (Reader reader = command.ExecuteReader())
+            Dictionary<Order, KeyValuePair<int, int>> orders = new Dictionary<Order, KeyValuePair<int, int>>();
+            using (Database database = new Database())
+            {
+                Command command = database.Command(
+                    "SELECT "
+                    + "`order`.`id`, "
+                    + "`order`.`user`, "
+                    + "`order`.`offer`, "
+                    + "`order`.`time`, "
+                    + "`order`.`other`, "
+                    + "`order`.`desc`, "
+                    + "`order`.`days` "
+                    + " FROM `order`, `offer` "
+                    + "WHERE `order`.`offer`=`offer`.`id` AND `offer`.`executor`=@id "
+                    + $" ORDER BY `order`.`time` DESC LIMIT {current[0]}, {Count} ");
+                command.Parameters.Add("@id", SqlType.Int32).Value = Petlance.User.Id;
+                using Reader reader = command.ExecuteReader();
                 while (reader.Read())
                     orders.Add(new Order(id: reader.GetInt32(0),
-                                         user: User.GetUserById(reader.GetInt32(1)),
-                                         offer: Offer.GetOfferById(reader.GetInt32(2)),
+                                         user: null,
+                                         offer: null,//Offer.GetOfferById(reader.GetInt32(2)),
                                          time: reader.GetDateTime(3),
                                          price: 0,
                                          isPaid: false,
@@ -136,16 +160,27 @@ namespace Petlance
                                          other: reader.GetString(4),
                                          desc: reader.GetString(5),
                                          isAccepted: false,
-                                         days: reader.GetInt32(6)));
-            foreach (Order order in orders)
+                                         days: reader.GetInt32(6)),
+                                         new KeyValuePair<int, int>(reader.GetInt32(1), reader.GetInt32(2)));
+            }
+            foreach (var order in orders)
             {
-                command = database.Command("SELECT `animal`, `count` FROM `order_animal` WHERE `order`=@order ");
-                command.Parameters.Add("@order", SqlType.Int32).Value = order.Id;
-                using (Reader reader = command.ExecuteReader())
+                using (Database database = new Database())
+                {
+                    Command command = database.Command("SELECT `animal`, `count` FROM `order_animal` WHERE `order`=@order ");
+                    command.Parameters.Add("@order", SqlType.Int32).Value = order.Key.Id;
+                    using Reader reader = command.ExecuteReader();
                     while (reader.Read())
-                        order.Animals.Add(new Animal(reader.GetInt32(0)), reader.GetInt32(1));
+                        order.Key.Animals.Add(new Animal(reader.GetInt32(0)), reader.GetInt32(1));
+                }
+                if (!users.ContainsKey(order.Value.Key))
+                    users.Add(order.Value.Key, User.GetUserById(order.Value.Key));
+                order.Key.User = users[order.Value.Key];
+                if (!offers.ContainsKey(order.Value.Value))
+                    offers.Add(order.Value.Value, Offer.GetOfferById(order.Value.Value, Petlance.User as Executor));
+                order.Key.Offer = offers[order.Value.Value];
                 current[0]++;
-                ListLayout[0].AddView((View)new OrderLayout(this, order, OrderType.Incomming));
+                ListLayout[0].AddView(new OrderLayout(this, order.Key, OrderType.Incomming));
             }
             if (orders.Count==0 && current[0] == 0)
             {

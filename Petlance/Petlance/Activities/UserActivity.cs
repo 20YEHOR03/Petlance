@@ -21,7 +21,6 @@ namespace Petlance
         LinearLayout DocumentArea { get; set; }
         TextView OpenDocumentButton { get; set; }
         TextView ReplaceDocumentButton { get; set; }
-        TextView BecomeExecutorButton { get; set; }
         ImageView EditButton { get; set; }
         byte[] Avatar { get; set; }
         Dialog CodeDialog { get; set; }
@@ -88,6 +87,8 @@ namespace Petlance
                     if (IAccount.CheckPassword(new_password.Text))
                     {
                         Petlance.User.Password = SecurePasswordHasher.Hash(new_password.Text);
+                        Preferences.Remove("password");
+                        Preferences.Set("password", Petlance.User.Password);
                         Petlance.User.Update();
                         ChangePasswordDialog.Hide();
                         old_password.Text = new_password.Text = confirm_password.Text = "";
@@ -143,6 +144,8 @@ namespace Petlance
             Petlance.User.Email = Fields[1].Text;
             Petlance.User.Phone = Fields[2].Text;
             Petlance.User.Picture = Avatar;
+            Preferences.Remove("login");
+            Preferences.Set("login", Petlance.User.Email);
             Petlance.User.Update();
         }
 

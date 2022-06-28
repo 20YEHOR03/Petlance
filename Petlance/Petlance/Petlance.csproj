@@ -98,7 +98,7 @@
     <Compile Include="Veiws\EntityLayout.cs" />
     <Compile Include="Veiws\DocumentLayout.cs" />
     <Compile Include="Veiws\ReasonButton.cs" />
-    <Compile Include="Veiws\RequestLayout.cs" />
+    <Compile Include="Veiws\OrderLayout.cs" />
     <Compile Include="Veiws\ReviewLayout.cs" />
     <Compile Include="Veiws\OfferLayout.cs" />
     <Compile Include="Entities\Animal.cs" />
@@ -274,11 +274,6 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\activity_create.xml">
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\layout\activity_take.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
   </ItemGroup>
@@ -499,6 +494,18 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\report_prompt.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\email_prompt.xml">
+      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\new_password_prompt.xml">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
       <SubType>Designer</SubType>
     </AndroidResource>

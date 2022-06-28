@@ -27,7 +27,7 @@ namespace Petlance
         public DateTime Date { get; set; }
 
         public string InsertQuery => "INSERT INTO `review`(`id`, `user`, `executor`, `description`, `rate`, `date`) " +
-            "VALUES (@id, @user, @executor, @description, @rate, @date)";
+            "VALUES (@id, @user, @executor, @description, @rate, @date);";
 
         public string UpdateQuery => "UPDATE `review` SET " +
             "`user`=@user," +
@@ -35,7 +35,7 @@ namespace Petlance
             "`description`=@description," +
             "`rate`=@rate," +
             "`date`=@date " +
-            "WHERE `order`=@id";
+            "WHERE `id`=@id";
 
         public bool Delete()
         {
@@ -91,7 +91,7 @@ namespace Petlance
                         null,
                         (DateTime)reader["date"]));
             command = database.Command("SELECT `animal` FROM `review_animal` WHERE `review`=@review");
-            foreach(Review review in reviews)
+            foreach (Review review in reviews)
             {
                 command.Parameters.Add("@review", SqlType.Int32).Value = review.Id;
                 using (Reader reader = command.ExecuteReader())

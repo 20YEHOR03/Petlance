@@ -56,7 +56,9 @@ EditText;obj\Debug\110\res\layout\content_create_page2.xml
 EditText;obj\Debug\110\res\layout\content_create_page3.xml
 EditText;obj\Debug\110\res\layout\content_user.xml
 EditText;obj\Debug\110\res\layout\decline.xml
+EditText;obj\Debug\110\res\layout\email_prompt.xml
 EditText;obj\Debug\110\res\layout\filters.xml
+EditText;obj\Debug\110\res\layout\new_password_prompt.xml
 EditText;obj\Debug\110\res\layout\order.xml
 EditText;obj\Debug\110\res\layout\payment.xml
 EditText;obj\Debug\110\res\layout\price_prompt.xml
@@ -144,8 +146,10 @@ LinearLayout;obj\Debug\110\res\layout\content_offer.xml
 LinearLayout;obj\Debug\110\res\layout\content_promote.xml
 LinearLayout;obj\Debug\110\res\layout\content_user.xml
 LinearLayout;obj\Debug\110\res\layout\decline.xml
+LinearLayout;obj\Debug\110\res\layout\email_prompt.xml
 LinearLayout;obj\Debug\110\res\layout\filters.xml
 LinearLayout;obj\Debug\110\res\layout\header.xml
+LinearLayout;obj\Debug\110\res\layout\new_password_prompt.xml
 LinearLayout;obj\Debug\110\res\layout\offer_layout.xml
 LinearLayout;obj\Debug\110\res\layout\order.xml
 LinearLayout;obj\Debug\110\res\layout\payment.xml
@@ -213,8 +217,10 @@ TextView;obj\Debug\110\res\layout\content_offer.xml
 TextView;obj\Debug\110\res\layout\content_promote.xml
 TextView;obj\Debug\110\res\layout\content_user.xml
 TextView;obj\Debug\110\res\layout\decline.xml
+TextView;obj\Debug\110\res\layout\email_prompt.xml
 TextView;obj\Debug\110\res\layout\filters.xml
 TextView;obj\Debug\110\res\layout\header.xml
+TextView;obj\Debug\110\res\layout\new_password_prompt.xml
 TextView;obj\Debug\110\res\layout\offer_layout.xml
 TextView;obj\Debug\110\res\layout\order.xml
 TextView;obj\Debug\110\res\layout\payment.xml

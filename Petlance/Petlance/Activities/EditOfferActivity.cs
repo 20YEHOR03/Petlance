@@ -86,6 +86,11 @@ namespace Petlance
                     Areas[5].FindViewById<CheckBox>(Resource.Id.checkbox),
                     Areas[5].FindViewById<EditText>(Resource.Id.editText))
             };
+            foreach (var animal in Animals)
+            {
+                animal.Key.CheckedChange += Key_CheckedChange;
+                animal.Value.Visibility = animal.Key.Checked ? ViewStates.Visible : ViewStates.Gone;
+            }
             foreach (var button in RadioButtons)
                 button.Click += RadioGroup_Click;
             PrevButton = FindViewById<TextView>(Resource.Id.fab_prev);
@@ -114,9 +119,15 @@ namespace Petlance
             }
             else
             {
-                Offer = new Offer();
+                //Offer = new Offer();
                 Contacts.Text = $"Email: {Petlance.User.Email}\nPhone: {Petlance.User.Phone}";
             }
+        }
+
+        private void Key_CheckedChange(object sender, CompoundButton.CheckedChangeEventArgs e)
+        {
+            foreach (var animal in Animals)
+                animal.Value.Visibility = animal.Key.Checked ? ViewStates.Visible : ViewStates.Gone;
         }
 
         protected async void AddPhotoButton_Click(object sender, EventArgs e)
@@ -162,6 +173,7 @@ namespace Petlance
         {
             if (++checkedIndex == 4)
             {
+                bool t = false;
                 if (OfferTitle.Text != "")
                 {
                     List<byte[]> bitmaps = new List<byte[]>();
@@ -173,24 +185,40 @@ namespace Petlance
                             animals.Add(new Animal(i, Convert.ToInt32(Animals[i].Value.Text)));
                     string initPrice = FindViewById<EditText>(Resource.Id.initial_price).Text;
                     if (initPrice == "") initPrice = null;
-                    Offer = new Offer(
-                        OfferTitle.Text,
-                        ShortDesc.Text,
-                        LongDesc.Text,
-                        Convert.ToInt32(initPrice),
-                        FindViewById<EditText>(Resource.Id.contacts).Text,
-                        Offer.IsActive,
-                        Petlance.User as Executor,
-                        Offer.Entopped,
-                        animals.ToArray(),
-                        bitmaps.ToArray())
-                    { Id = Offer.Id};
+                    if (Offer != null)
+                        Offer = new Offer(Offer.Id,
+                            OfferTitle.Text,
+                            ShortDesc.Text,
+                            LongDesc.Text,
+                            Convert.ToInt32(initPrice),
+                            FindViewById<EditText>(Resource.Id.contacts).Text,
+                            Offer.IsActive,
+                            Petlance.User as Executor,
+                            Offer.Entopped,
+                            animals.ToArray(),
+                            bitmaps.ToArray());
+                    else
+                        Offer = new Offer(-1,
+                            OfferTitle.Text,
+                            ShortDesc.Text,
+                            LongDesc.Text,
+                            Convert.ToInt32(initPrice),
+                            FindViewById<EditText>(Resource.Id.contacts).Text,
+                            true,
+                            Petlance.User as Executor,
+                            false,
+                            animals.ToArray(),
+                            bitmaps.ToArray());
                     Offer.Update();
                     Prev.Recreate();
                     Finish();
                     return;
                 }
-                else checkedIndex--;
+                else
+                {
+                    checkedIndex--;
+                    GetDialog("Error", "Please enter title", "OK").Show();
+                }
             }
             RadioButtons[checkedIndex].Checked = true;
             RadioGroup_Click(sender, e);
