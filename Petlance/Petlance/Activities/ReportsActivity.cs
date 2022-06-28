@@ -5,10 +5,11 @@ using Android.Views;
 using Android.Widget;
 using System;
 using System.Collections.Generic;
-using static Android.App.ActionBar;
+using static Android.Views.ViewGroup;
 using Command = MySqlConnector.MySqlCommand;
 using Reader = MySqlConnector.MySqlDataReader;
 using SqlType = MySqlConnector.MySqlDbType;
+using static Petlance.AdaptiveLayout;
 
 namespace Petlance
 {
@@ -73,6 +74,9 @@ namespace Petlance
                     LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent), 
                     Text = "Reason"
                 };
+                reason.SetPadding(1 * vh, 0, 0, 0);
+                reason.LayoutParameters = new MarginLayoutParams(reason.LayoutParameters);
+                (reason.LayoutParameters as MarginLayoutParams).SetMargins(0, -2 * vmin, 0, 2 * vh);
                 reason.SetBackgroundResource(Resource.Drawable.enter_button);
                 OfferLayout.AddView(reason);
                 

@@ -41,6 +41,7 @@ com.google.android.material.navigation.NavigationView;obj\Debug\110\res\layout\a
 com.google.android.material.navigation.NavigationView;obj\Debug\110\res\layout\activity_user.xml
 corners;obj\Debug\110\res\drawable\button.xml
 corners;obj\Debug\110\res\drawable\button_hover.xml
+corners;obj\Debug\110\res\drawable\button_report.xml
 corners;obj\Debug\110\res\drawable\external_login_button_backgroud.xml
 corners;obj\Debug\110\res\drawable\external_login_button_backgroud_inactive.xml
 dimen;obj\Debug\110\res\values\dimens.xml
@@ -104,6 +105,7 @@ include;obj\Debug\110\res\layout\content_offer.xml
 include;obj\Debug\110\res\layout\order.xml
 include;obj\Debug\110\res\layout\report_prompt.xml
 item;obj\Debug\110\res\drawable\enter_button.xml
+item;obj\Debug\110\res\drawable\enter_button_red.xml
 item;obj\Debug\110\res\drawable\round_empty.xml
 item;obj\Debug\110\res\drawable\round_fill.xml
 item;obj\Debug\110\res\drawable\round_rating.xml
@@ -182,14 +184,17 @@ ScrollView;obj\Debug\110\res\layout\content_list.xml
 ScrollView;obj\Debug\110\res\layout\content_offer.xml
 ScrollView;obj\Debug\110\res\layout\content_user.xml
 selector;obj\Debug\110\res\drawable\enter_button.xml
+selector;obj\Debug\110\res\drawable\enter_button_red.xml
 selector;obj\Debug\110\res\drawable\round_empty.xml
 selector;obj\Debug\110\res\drawable\round_fill.xml
 shape;obj\Debug\110\res\drawable\button.xml
 shape;obj\Debug\110\res\drawable\button_hover.xml
+shape;obj\Debug\110\res\drawable\button_report.xml
 shape;obj\Debug\110\res\drawable\external_login_button_backgroud.xml
 shape;obj\Debug\110\res\drawable\external_login_button_backgroud_inactive.xml
 solid;obj\Debug\110\res\drawable\button.xml
 solid;obj\Debug\110\res\drawable\button_hover.xml
+solid;obj\Debug\110\res\drawable\button_report.xml
 solid;obj\Debug\110\res\drawable\external_login_button_backgroud.xml
 solid;obj\Debug\110\res\drawable\external_login_button_backgroud_inactive.xml
 string;obj\Debug\110\res\values\strings.xml
@@ -228,3 +233,4 @@ TextView;obj\Debug\110\res\layout\price_prompt.xml
 TextView;obj\Debug\110\res\layout\report.xml
 TextView;obj\Debug\110\res\layout\report_prompt.xml
 TextView;obj\Debug\110\res\layout\review.xml
+View;obj\Debug\110\res\layout\activity_login.xml

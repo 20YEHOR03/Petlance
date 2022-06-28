@@ -1,5 +1,6 @@
 ﻿using Android.App;
 using Android.Content;
+using Android.Graphics;
 using Android.Runtime;
 using Android.Util;
 using Android.Widget;
@@ -32,7 +33,7 @@ namespace Petlance
             Initialize();
         }
 
-        protected DocumentLayout(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer){ }
+        protected DocumentLayout(IntPtr javaReference, JniHandleOwnership transfer) : base(javaReference, transfer) { }
 
         public DocumentLayout(Context context, IAttributeSet attrs) : base(context, attrs) => Initialize();
 
@@ -43,6 +44,8 @@ namespace Petlance
         private void Initialize()
         {
             Orientation = Orientation.Vertical;
+            LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
+            SetGravity(Android.Views.GravityFlags.Center);
             Android.App.AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(Context);
             ad.SetMessage("Error opening file");
             ad.SetPositiveButton("Confirm", (sender, e) => { });
@@ -66,20 +69,31 @@ namespace Petlance
                 LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent),
                 Orientation = Orientation.Horizontal
             };
-            ImageView acceptButton = new ImageView(Context) { LayoutParameters = new LayoutParams(ButtonSize, ButtonSize) };
-            acceptButton.SetImageResource(Resource.Drawable.plus);
+            layout.SetGravity(Android.Views.GravityFlags.Center);
+            ImageView acceptButton = new ImageView(Context) { LayoutParameters = new LayoutParams(8 * vmin, 8 * vmin) };
+            acceptButton.SetPadding(1 * vh, 1 * vh, 1 * vh, 1 * vh);
+            acceptButton.SetImageResource(Resource.Drawable.check_mark);
+            acceptButton.SetBackgroundResource(Resource.Drawable.enter_button);
             acceptButton.Click += AcceptButton_ClickAsync;
-            layout.AddView(acceptButton); 
+            layout.AddView(acceptButton);
             TextView button = new TextView(Context)
             {
-                LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
-                Text = "Open document"
+                LayoutParameters = new LayoutParams(15 * vh, 3 * vh),
+                Text = "Open document",
+                Gravity = Android.Views.GravityFlags.Center,
+
+
             };
+            button.SetTextColor(Color.White);
+            button.LayoutParameters = new MarginLayoutParams(button.LayoutParameters);
+            (button.LayoutParameters as MarginLayoutParams).SetMargins(1 * vh, 0, 1 * vh, 0);
             button.SetBackgroundResource(Resource.Drawable.enter_button);
             button.Click += Button_Click;
             layout.AddView(button);
-            ImageView declineButton = new ImageView(Context) { LayoutParameters = new LayoutParams(ButtonSize, ButtonSize) };
-            declineButton.SetImageResource(Resource.Drawable.plus);
+            ImageView declineButton = new ImageView(Context) { LayoutParameters = new LayoutParams(8 * vmin, 8 * vmin) };
+            declineButton.SetPadding(1 * vh, 1 * vh, 1 * vh, 1 * vh);
+            declineButton.SetImageResource(Resource.Drawable.cross);
+            declineButton.SetBackgroundResource(Resource.Drawable.enter_button);
             declineButton.Click += DeclineButton_Click;
             layout.AddView(declineButton);
             AddView(layout);

@@ -21,7 +21,11 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:orientation="vertical"
+                    android:layout_marginRight="@dimen/activity_horizontal_margin"
+                    android:layout_marginLeft="@dimen/activity_horizontal_margin"
+                    android:layout_marginTop="@dimen/activity_horizontal_margin">
+
                     <LinearLayout
                         android:orientation="vertical"
                         android:layout_width="match_parent"
@@ -86,11 +90,17 @@
                         android:textSize="25dp"
                         android:layout_weight="1"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="@dimen/activity_vertical_margin"
+                        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
                     <EditText
                         android:inputType="textMultiLine"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingRight="8dp"
                         android:id="@+id/other"
                         android:background="@drawable/external_login_button_backgroud"/>
                     <TextView
@@ -104,6 +114,10 @@
                         android:inputType="textMultiLine"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingLeft="8dp"
+                        android:paddingTop="3dp"
+                        android:paddingBottom="3dp"
+                        android:paddingRight="8dp"
                         android:id="@+id/addins"
                         android:background="@drawable/external_login_button_backgroud"
                         android:minHeight="50dp"/>

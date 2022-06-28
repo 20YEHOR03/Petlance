@@ -1,7 +1,5 @@
 ﻿using Android.App;
-using Android.Content;
 using Android.Util;
-using AndroidX.CoordinatorLayout.Widget;
 using System;
 
 namespace Petlance

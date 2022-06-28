@@ -77,7 +77,8 @@ namespace Petlance
         protected void RegisterLink_Click(object sender, EventArgs e) => ShowActivity<RegisterActivity>();
         protected void ForgotLink_Click(object sender, EventArgs e)
         {
-            emailDialog = GetDialog(Resource.Layout.email_prompt, ConfirmEmail_Click);
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+
             emailDialog.Show();
         }
 

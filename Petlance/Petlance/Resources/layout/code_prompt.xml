@@ -7,13 +7,19 @@
         android:id="@+id/text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="54dp"
+        android:layout_marginRight="54dp"
         android:text="We’ve sent a letter on your e-mail with code. Write down this code in the field below."/>
     <TextView
         android:id="@+id/error"
+        android:textColor="@color/colorError"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
     <EditText
         android:id="@+id/code"
+        android:layout_marginLeft="54dp"
+        android:layout_marginRight="54dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter your code here"/>

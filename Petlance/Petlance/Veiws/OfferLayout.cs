@@ -19,7 +19,7 @@ namespace Petlance
         private int RightPadding = 2 * vw;
         private int LeftPadding = 2 * vw;
         private Offer offer;
-        public FloatingActionButton editButton;
+        public ImageView editButton;
         public OfferLayout(Context context, Offer offer) : base(context)
         {
             this.offer = offer;
@@ -38,8 +38,12 @@ namespace Petlance
                 LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.MatchParent),
                 Orientation = Orientation.Horizontal
             };
+            LayoutParameters = new MarginLayoutParams(LayoutParameters);
+            (LayoutParameters as MarginLayoutParams).SetMargins(0, 1 * vh, 0, 1 * vh);
             layout.SetGravity(Android.Views.GravityFlags.CenterVertical);
             ImageView imageView = new ImageView(Context) { LayoutParameters = new LayoutParams(ImageSize, ImageSize) };
+            imageView.LayoutParameters = new MarginLayoutParams(imageView.LayoutParameters);
+            (imageView.LayoutParameters as MarginLayoutParams).SetMargins(0, 0, 1 * vh, 0);
             try { imageView.SetImageBitmap(Images.GetBitmapFromBytes(offer.Executor.Picture)); }
             catch { imageView.SetImageResource(Resource.Drawable.no_image); }
             layout.AddView(imageView);
@@ -59,6 +63,8 @@ namespace Petlance
             {
                 ImageView animalIco = new ImageView(Context) { LayoutParameters = new LayoutParams(AnimalSize, AnimalSize) };
                 animalIco.SetImageResource(offer.Animals[i].GetResourceType());
+                animalIco.LayoutParameters = new MarginLayoutParams(animalIco.LayoutParameters);
+                (animalIco.LayoutParameters as MarginLayoutParams).SetMargins(0, 0, 1 * vmin, 0);
                 Upper.AddView(animalIco);
             }
             if (offer.Animals.Length > 3)
@@ -67,7 +73,7 @@ namespace Petlance
                 {
                     LayoutParameters = new LayoutParams(AnimalSize, AnimalSize),
                     Text = $"+{offer.Animals.Length - 3}",
-                    TextSize = TitleFontSize
+                    TextSize = 0.8f * vh
                 };
                 Upper.AddView(animalsMore);
             }
@@ -89,11 +95,16 @@ namespace Petlance
             Right.AddView(title);
             Right.AddView(desc);
             layout.AddView(Right);
-            editButton = new FloatingActionButton(Context)
+            editButton = new ImageView(Context)
             {
-                LayoutParameters = new LayoutParams(ButtonSize, ButtonSize),
+                LayoutParameters = new LayoutParams(8 * vmin, 8 * vmin),
                 Visibility = (Petlance.User != null && Petlance.User.Id == offer.Executor.Id) ? Android.Views.ViewStates.Visible : Android.Views.ViewStates.Gone,
             };
+            editButton.LayoutParameters = new MarginLayoutParams(editButton.LayoutParameters);
+            (editButton.LayoutParameters as MarginLayoutParams).SetMargins(1 * vh, 0, 0, 0);
+            editButton.SetPadding(1 * vh, 1 * vh, 1 * vh, 1 * vh);
+            editButton.SetImageResource(Resource.Drawable.edit);
+            editButton.SetBackgroundResource(Resource.Drawable.enter_button);
             AddView(layout);
             AddView(editButton);
             editButton.Click += EditButton_Click;
@@ -123,7 +134,7 @@ namespace Petlance
             if (Context is OfferListActivity)
             {
                 offer.Delete();
-                (Context as OfferListActivity).FiltersButton_Click(sender,e);
+                (Context as OfferListActivity).FiltersButton_Click(sender, e);
             }
             base.YesButton_Click(sender, e);
         }

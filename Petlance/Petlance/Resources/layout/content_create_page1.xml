@@ -38,6 +38,9 @@
                 android:minWidth="100dp"
                 android:minHeight="25dp"
                 android:textSize="25dp"
+                android:gravity="center"
+                android:paddingLeft="3dp"
+                android:paddingRight="3dp"
                 android:background="@drawable/external_login_button_backgroud"
                 android:id="@+id/initial_price" />
         </LinearLayout>

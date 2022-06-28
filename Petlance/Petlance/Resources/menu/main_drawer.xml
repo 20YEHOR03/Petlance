@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
 		<item
             android:id="@+id/main"
-            android:icon="@drawable/no_image"
+            android:icon="@drawable/main"
             android:checkable="false"
             android:title="Main"/>
 		<item
@@ -29,7 +29,7 @@
             android:icon="@drawable/favorite_menu"
             android:checkable="false"
             android:title="Become an executor"/>
-		android:title="My comments"/>
+		    android:title="My comments"/>
 		<item
             android:id="@+id/logout"
             android:icon="@drawable/logout"

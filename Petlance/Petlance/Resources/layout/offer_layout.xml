@@ -11,7 +11,7 @@
         android:layout_height="wrap_content"
         android:text="Initial price: ₴"
         android:layout_marginBottom="@dimen/horizontal_prompt_text_margin"
-        android:textSize="@dimen/abc_text_size_medium_material"/>
+        android:textSize="24dp"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

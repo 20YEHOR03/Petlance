@@ -9,7 +9,8 @@
         android:id="@+id/pet0"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin">
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -30,7 +31,10 @@
             android:layout_height="match_parent"
             android:minWidth="75dp"
             android:minHeight="25dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
             android:textSize="25dp"
+            android:gravity="center_horizontal"
             android:background="@drawable/external_login_button_backgroud"
             android:id="@+id/editText" />
     </LinearLayout>
@@ -38,7 +42,8 @@
         android:id="@+id/pet1"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin">
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -60,6 +65,9 @@
             android:minWidth="75dp"
             android:minHeight="25dp"
             android:textSize="25dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:gravity="center_horizontal"
             android:background="@drawable/external_login_button_backgroud"
             android:id="@+id/editText" />
     </LinearLayout>
@@ -67,7 +75,8 @@
         android:id="@+id/pet2"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin">
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -89,6 +98,9 @@
             android:minWidth="75dp"
             android:minHeight="25dp"
             android:textSize="25dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:gravity="center_horizontal"
             android:background="@drawable/external_login_button_backgroud"
             android:id="@+id/editText" />
     </LinearLayout>
@@ -96,7 +108,8 @@
         android:id="@+id/pet3"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin">
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -118,6 +131,9 @@
             android:minWidth="75dp"
             android:minHeight="25dp"
             android:textSize="25dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:gravity="center_horizontal"
             android:background="@drawable/external_login_button_backgroud"
             android:id="@+id/editText" />
     </LinearLayout>
@@ -125,7 +141,8 @@
         android:id="@+id/pet4"
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin">
         <CheckBox
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -147,6 +164,9 @@
             android:minWidth="75dp"
             android:minHeight="25dp"
             android:textSize="25dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:gravity="center_horizontal"
             android:background="@drawable/external_login_button_backgroud"
             android:id="@+id/editText" />
     </LinearLayout>
@@ -154,6 +174,7 @@
         android:id="@+id/pet5"
         android:layout_width="match_parent"
         android:layout_height="35dp"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
         android:orientation="horizontal">
         <CheckBox
             android:layout_width="wrap_content"
@@ -176,6 +197,9 @@
             android:minWidth="75dp"
             android:minHeight="25dp"
             android:textSize="25dp"
+            android:paddingLeft="3dp"
+            android:paddingRight="3dp"
+            android:gravity="center_horizontal"
             android:background="@drawable/external_login_button_backgroud"
             android:id="@+id/editText" />
     </LinearLayout>
