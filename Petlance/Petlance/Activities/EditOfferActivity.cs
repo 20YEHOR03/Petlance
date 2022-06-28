@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Xamarin.Essentials;
+using static Android.Views.ViewGroup;
 using static Petlance.AdaptiveLayout;
 
 namespace Petlance
@@ -182,7 +183,7 @@ namespace Petlance
                         if (Animals[i].Key.Checked)
                             animals.Add(new Animal(i, Convert.ToInt32(Animals[i].Value.Text)));
                     string initPrice = FindViewById<EditText>(Resource.Id.initial_price).Text;
-                    if (initPrice == "") initPrice = 0;
+                    if (initPrice == "") initPrice = "0";
                     if (Offer != null)
                         Offer = new Offer(Offer.Id,
                             OfferTitle.Text,

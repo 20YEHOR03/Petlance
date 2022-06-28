@@ -23,7 +23,8 @@ namespace Petlance
         protected FloatingActionButton FloatingActionButton { get; set; }
         public string FROMclause { get; set; }
         public string WHEREclause { get; set; }
-        Dictionary<int, Executor> executors = new Dictionary<int, Executor>();
+
+        readonly Dictionary<int, Executor> executors = new Dictionary<int, Executor>();
 
         protected override void OnCreate(Bundle savedInstanceState)
         {

@@ -39,18 +39,12 @@ namespace Petlance
             Random random = new Random();
             Code = "";
             for (int i = 0; i < 4; i++)
-                switch (random.Next(0, 3))
+                Code += random.Next(0, 3) switch
                 {
-                    case 0:
-                        Code += (char)random.Next(65, 91);
-                        break;
-                    case 1:
-                        Code += (char)random.Next(97, 123);
-                        break;
-                    default:
-                        Code += random.Next(0, 10);
-                        break;
-                }
+                    0 => (char)random.Next(65, 91),
+                    1 => (char)random.Next(97, 123),
+                    _ => (char)random.Next(0, 10),
+                };
         }
 
         //public static async Task ForgotPassword(User user)

@@ -883,3 +883,11 @@ E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\report_prompt.
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\android\src\crc64fc3325efa7b239bc\ReasonButton.java
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\email_prompt.xml
 E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\layout\new_password_prompt.xml
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\drawable\check_mark.png
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\drawable\button_report.xml
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\drawable\cross.png
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\drawable\documents.png
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\drawable\edit_save.png
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\drawable\enter_button_red.xml
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\drawable\main.png
+E:\Source\Git\Petlance\Petlance\Petlance\obj\Debug\110\res\drawable\my_offers.png
