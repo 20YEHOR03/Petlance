@@ -27,6 +27,8 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:id="@+id/picture"
+                    android:background="@android:drawable/picture_frame"
+                    android:scaleType="fitXY"
                     android:contentDescription="@string/default_description"
                     android:layout_marginRight="@dimen/activity_horizontal_margin"
                     android:layout_marginBottom="@dimen/activity_horizontal_margin"/>

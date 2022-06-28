@@ -41,7 +41,14 @@ namespace Petlance
             LayoutParameters = new MarginLayoutParams(LayoutParameters);
             (LayoutParameters as MarginLayoutParams).SetMargins(0, 1 * vh, 0, 1 * vh);
             layout.SetGravity(Android.Views.GravityFlags.CenterVertical);
-            ImageView imageView = new ImageView(Context) { LayoutParameters = new LayoutParams(ImageSize, ImageSize) };
+            ImageView imageView = new ImageView(Context) 
+            { 
+                LayoutParameters = new LayoutParams(ImageSize, ImageSize),
+                
+
+            };
+            imageView.SetScaleType(ImageView.ScaleType.FitXy);
+            imageView.SetBackgroundResource(Resource.Drawable.image_frame);
             imageView.LayoutParameters = new MarginLayoutParams(imageView.LayoutParameters);
             (imageView.LayoutParameters as MarginLayoutParams).SetMargins(0, 0, 1 * vh, 0);
             try { imageView.SetImageBitmap(Images.GetBitmapFromBytes(offer.Executor.Picture)); }
