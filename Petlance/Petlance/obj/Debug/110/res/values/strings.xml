@@ -7,5 +7,5 @@
 		Follow the steps below to\n
 		create new offer
 	</string><string name="select_pets">
-		Select the amount of each type of\nanimals you want to keep:
+		Select a price for each species animal you want to keep:
 	</string><string name="write_short_description">Write a short description of your offer:</string><string name="write_full_description">Write a full description of your offer:</string><string name="write_title">Write a title of your offer:</string><string name="write_contacts">Write your contacts:</string><string name="add_photos_of_apartments">Add photos of your apartments:</string><string name="add_photo">Add photo</string></resources>

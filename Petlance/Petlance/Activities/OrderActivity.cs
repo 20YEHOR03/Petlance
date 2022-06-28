@@ -102,7 +102,7 @@ namespace Petlance
         private void PayButton_Click(object sender, EventArgs e)
         {
             AlertDialog.Builder ad = new Android.App.AlertDialog.Builder(this);
-            ad.SetTitle("Pseudopayments");
+            ad.SetTitle("Payments");
             ad.SetView(Resource.Layout.payment);
             ad.SetPositiveButton("Confirm", Pay);
             ad.SetNegativeButton("Cancel", (sender, e) => { });

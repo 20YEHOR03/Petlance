@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
 		<item
             android:id="@+id/main"
-            android:icon="@drawable/no_image"
+            android:icon="@drawable/main"
             android:checkable="false"
             android:title="Main"/>
 		<item
@@ -21,7 +21,7 @@
             android:title="Favourites"/>
 		<item
             android:id="@+id/my_offers"
-            android:icon="@drawable/my_orders"
+            android:icon="@drawable/my_offers"
             android:checkable="false"
             android:title="My offers"/>
 		<item

@@ -35,7 +35,7 @@ namespace Petlance
             "`description`=@description," +
             "`rate`=@rate," +
             "`date`=@date " +
-            "WHERE `order`=@id";
+            "WHERE `id`=@id";
 
         public bool Delete()
         {
@@ -53,12 +53,19 @@ namespace Petlance
             command.Parameters.Add("@description", SqlType.String).Value = Description;
             command.Parameters.Add("@rate", SqlType.Float).Value = Rate;
             command.Parameters.Add("@date ", SqlType.DateTime).Value = Date;
+            if (check)
+            {
+                command.Parameters.Add("@id", SqlType.Int32).Value = Id;
+                command.ExecuteNonQuery();
+            }
+            else
+                using (Reader reader = command.ExecuteReader())
+                    if (reader.Read())
+                        Id = reader.GetInt32(0);
+            command = database.Command("DELETE FROM review_animal WHERE review=@id");
             command.Parameters.Add("@id", SqlType.Int32).Value = Id;
             command.ExecuteNonQuery();
-            command = database.Command("DELETE FROM `review_animal` WHERE `review`=@id");
-            command.Parameters.Add("@id", SqlType.Int32).Value = Id;
-            command.ExecuteNonQuery();
-            command = database.Command("INSERT INTO `review_animal`(`review`, `animal`) VALUES (@review, @animal)");
+            command = database.Command("INSERT INTO review_animal(review, animal) VALUES (@review, @animal)");
             if (Animals != null)
                 foreach (Animal animal in Animals)
                 {

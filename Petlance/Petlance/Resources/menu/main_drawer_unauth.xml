@@ -6,7 +6,7 @@
     <group android:checkableBehavior="single">
 		<item
             android:id="@+id/main"
-            android:icon="@drawable/no_image"
+            android:icon="@drawable/main"
             android:checkable="false"
             android:title="Main"/>
 		<item

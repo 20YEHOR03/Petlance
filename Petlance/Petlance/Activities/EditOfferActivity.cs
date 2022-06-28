@@ -172,7 +172,7 @@ namespace Petlance
                         if (Animals[i].Key.Checked)
                             animals.Add(new Animal(i, Convert.ToInt32(Animals[i].Value.Text)));
                     string initPrice = FindViewById<EditText>(Resource.Id.initial_price).Text;
-                    if (initPrice == "") initPrice = null;
+                    if (initPrice == "") initPrice = "0";
                     Offer = new Offer(
                         OfferTitle.Text,
                         ShortDesc.Text,

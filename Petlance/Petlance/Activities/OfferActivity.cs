@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using Xamarin.Essentials;
-using static Android.App.ActionBar;
+using static Android.Views.ViewGroup;
 using static Petlance.AdaptiveLayout;
 
 namespace Petlance
@@ -99,6 +99,8 @@ namespace Petlance
         protected void AddImage(byte[] bitmap)
         {
             CoordinatorLayout layout = new CoordinatorLayout(this) { LayoutParameters = new LayoutParams(90 * vmin, 90 * vmin) };
+            layout.LayoutParameters = new MarginLayoutParams(layout.LayoutParameters);
+            (layout.LayoutParameters as MarginLayoutParams).SetMargins(0, 2 * vh, 2 * vh, 0);
             ImageView image = new ImageView(this) { LayoutParameters = new LayoutParams(90 * vmin, 90 * vmin) };
             image.SetImageBitmap(Images.GetBitmapFromBytes(bitmap));
             ImageView button = new ImageView(this) { LayoutParameters = new LayoutParams(10 * vmin, 10 * vmin) };
@@ -148,7 +150,7 @@ namespace Petlance
                     TextView price = new TextView(activity)
                     {
                         LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
-                        Text = "$" + animal.Price
+                        Text = "₴" + animal.Price
                     };
                     ImageView icon = new ImageView(activity) { LayoutParameters = new LayoutParams(AnimalSize, AnimalSize) };
                     icon.SetImageResource(animal.GetResourceType());
@@ -204,7 +206,10 @@ namespace Petlance
                 List<Animal> animals = new List<Animal>();
                 for (int i = 0; i < Animals.Count; i++)
                     if (Animals[i].Key.Checked)
+                        if (Animals[i].Value.Text != "")
+
                         order.Animals.Add(new Animal(i), Convert.ToInt32(Animals[i].Value.Text));
+                
                 order.Send();
                 TakeButton.Visibility = ViewStates.Gone;
             }
