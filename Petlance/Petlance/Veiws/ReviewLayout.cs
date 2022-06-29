@@ -14,12 +14,12 @@ namespace Petlance
 {
     class ReviewLayout : EntityLayout
     {
-        private int TitleFontSize = 3 * vmin;
+        private float TitleFontSize = 2.5f * vmin;
         private int FontSize = 2 * vmin;
         private int AnimalSize = 7 * vmin;
         private int TopPadding = 2 * vh;
         private int BottomPadding = 2 * vh;
-        private int RightPadding = 2 * vw;
+        private int RightPadding = 0;
         private int LeftPadding = 2 * vw;
         private Review review;
         public ReviewLayout(Context context, Review review) : base(context)
@@ -35,8 +35,8 @@ namespace Petlance
         {
             SetBackgroundResource(Resource.Drawable.external_login_button_backgroud);
             LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent);
-            LayoutParameters = new MarginLayoutParams(LayoutParameters);
-            (LayoutParameters as MarginLayoutParams).SetMargins(0, 2 * vh, 0, 2 * vh);
+            //LayoutParameters = new MarginLayoutParams(LayoutParameters);
+            //(LayoutParameters as MarginLayoutParams).SetMargins(1 * vh, 2 * vh, 1 * vh, 2 * vh);
             LinearLayout layout = new LinearLayout(Context)
             {
                 LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent),
@@ -57,7 +57,7 @@ namespace Petlance
             name.SetForegroundGravity(Android.Views.GravityFlags.End);
             RatingBar ratingBar = new RatingBar(Context)
             {
-                LayoutParameters = new LayoutParams(LayoutParams.WrapContent, LayoutParams.WrapContent),
+                LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent),
                 NumStars = 5,
                 ScaleX = 0.5F,
                 ScaleY = 0.5F,
